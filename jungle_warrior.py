@@ -134,15 +134,3 @@ user_name = input("What is your name? ")
 
 print_letter_by_letter(f"Hello {Fore.BLUE}{user_name}{Style.RESET_ALL}")
 time.sleep(0.5)
-# Introduction to the story
-intro_text = (
-    "Amidst the dense foliage of the jungle, the verdant canopy above dapples the ground with shifting patterns of "
-    "light and shadow. As you cautiously push through the undergrowth, the distant sounds of chirping birds and "
-    "rustling leaves are gradually replaced by a haunting stillness. A peculiar sensation tingles in the air, a "
-    "feeling that draws you forward with a mix of trepidation and curiosity. Your every step seems to resonate with "
-    "an unspoken energy, leading you deeper into this mystical realm. A stray sunbeam pierces through the thick "
-    "leaves, revealing an intricate archway adorned with ancient symbols, barely visible under layers of age and "
-    "moss. The sensation intensifies, a magnetic pull guiding you closer to the heart of this enigma. You've "
-    "stumbled upon something extraordinary – a long-forgotten temple, nestled within the embrace of the wild."
-)
-print_letter_by_letter(intro_text)
