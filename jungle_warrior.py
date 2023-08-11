@@ -3,6 +3,8 @@ from colorama import Fore, Style
 import time
 
 # Function to add an item to the inventory file
+
+
 def add_item_to_inventory(item):
     """
     Adds an item to the inventory file.
@@ -132,5 +134,32 @@ for line in lines:
 # Get user's name
 user_name = input("What is your name? ")
 
-print_letter_by_letter(f"Hello {Fore.BLUE}{user_name}{Style.RESET_ALL}")
-time.sleep(0.5)
+# Greet the user
+print_letter_by_letter(f"Hello, {Fore.BLUE}{user_name}{Style.RESET_ALL}! Welcome to an ancient adventure.")
+time.sleep(1)
+
+# Set the stage
+print_letter_by_letter("\nYou stand before the entrance of a mysterious temple.")
+time.sleep(1)
+print_letter_by_letter("The Door lies ahead")
+another = input("What do you do? ").lower()
+
+# Begin the journey
+if "go" or "door" or "walk" in another:
+    print_letter_by_letter("\nYou decide to do through the door, your heart pounding with anticipation...")
+    time.sleep(0.5)
+    print_letter_by_letter("\nAfter walking down the path for a while, you come across a small room with a table, a chest and another door.")
+    choice = input("What do you do? ")
+    if "chest" in choice:
+        if check_item_in_inventory("Key"):
+            print_letter_by_letter("You use the key to open the chest.")
+            print_letter_by_letter("You find a large ominous gem")
+        else:
+            print("You do not have a key to open the chest.")
+    else:
+        print("You decide not to interact with the chest.")
+else:
+    print_letter_by_letter("\nYou opt for the right path, a sense of curiosity guiding your steps...")
+    time.sleep(1)
+
+
