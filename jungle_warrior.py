@@ -336,6 +336,7 @@ for line in lines:
 user_name = input("What is your name? ")
 if user_name == "Sonny" or "Cooper" or "Leroy":
     print("yo whats good my g, from sonny")
+clear_terminal()
     
 username_color = Fore.GREEN + user_name + Style.RESET_ALL
 
@@ -350,7 +351,7 @@ print_letter_by_letter("The Door lies ahead")
 another = input("What do you do? ").lower()
 
 # Begin the journey
-if "go" in another or "door" in another or "walk" in another or "open" in another:
+if "go" in another or "door" in another or "walk" in another or "open" in another or "move" in another or "enter" in another or "proceed" in another or "advance" in another or "step" in another:
     print_letter_by_letter("You decide to go through the door, your heart pounding with anticipation...")
     time.sleep(0.5)
     print_letter_by_letter("\nAfter walking down the path for a while, you come across a small room with a table, a chest, and another door.")
@@ -358,7 +359,7 @@ if "go" in another or "door" in another or "walk" in another or "open" in anothe
     while True:  # Loop to allow the player to stay in the room
         choice = input("What do you do next? ").lower()
         
-        if "chest" in choice:
+        if "chest" in choice or "treasure" in choice or "box" in choice or "container" in choice or "loot" in choice or "unlock" in choice:
             if check_item_in_inventory("Mysterious key"):
                 print_letter_by_letter("You use the key to open the chest.")
                 print_letter_by_letter("You find a large ominous gem.")
@@ -384,28 +385,28 @@ if "go" in another or "door" in another or "walk" in another or "open" in anothe
             mosaic_image.show()
             
             step1 = input("Where do you step on the first tile? ")
-            if step1.lower() == "sky" or step1.lower() == "air" or step1.lower() == "blue":
+            if step1.lower() == "sky" or step1.lower() == "air" or step1.lower() == "blue" or step1.lower() == "clouds" or step1.lower() == "heavens":
                 print_letter_by_letter(correct_sensations["sky"])
             else:
                 print_letter_by_letter("The ground gives way beneath your feet, and you fall into a pit. Your journey ends here.")
                 quit()
             
             step2 = input("Where do you step on the second tile? ")
-            if step2.lower() == "earth" or step2.lower() == "hill" or step2.lower() == "grass" or step2.lower() == "green":
+            if step2.lower() == "earth" or step2.lower() == "hill" or step2.lower() == "grass" or step2.lower() == "green" or step2.lower() == "nature":
                 print_letter_by_letter(correct_sensations["earth"])
             else:
                 print_letter_by_letter("Arrows shoot out from the walls as you step on the wrong tile. Your adventure comes to an abrupt end.")
                 quit()
             
             step3 = input("Where do you step on the third tile? ")
-            if step3.lower() == "water" or step3.lower() == "river":
+            if step3.lower() == "water" or step3.lower() == "river" or step3.lower() == "stream" or step3.lower() == "flow":
                 print_letter_by_letter(correct_sensations["water"])
             else:
                 print_letter_by_letter("The ground shakes and crumbles beneath your feet. You fall into darkness, and your journey ends here.")
                 quit()
             
             step4 = input("Where do you step on the fourth tile? ")
-            if step4.lower() == "fire":
+            if step4.lower() == "fire" or step4.lower() == "flame" or step4.lower() == "blaze" or step4.lower() == "heat" or step4.lower() == "ignite":
                 print_letter_by_letter(correct_sensations["fire"])
             else:
                 print_letter_by_letter("You feel a searing heat as you step on the wrong tile. Flames engulf you, and your quest ends here.")
