@@ -144,14 +144,18 @@ time.sleep(1)
 print_letter_by_letter("The Door lies ahead")
 another = input("What do you do? ").lower()
 
+
+
 # Begin the journey
-if "go" in another or "door" in another or "walk" in another:
+# this probably pretty crap code, but it works anyway sooo...
+# also you might wanna rename variables better sometime
+if "go" in another or "door" in another or "walk" in another or "open" in another:
     print_letter_by_letter("\nYou decide to go through the door, your heart pounding with anticipation...")
     time.sleep(0.5)
     print_letter_by_letter("\nAfter walking down the path for a while, you come across a small room with a table, a chest, and another door.")
     
     while True:  # Loop to allow the player to stay in the room
-        choice = input("What do you do? ").lower()
+        choice = input("What do you do next? ").lower()
         
         if "chest" in choice:
             if check_item_in_inventory("Mysterious key"):
@@ -160,6 +164,9 @@ if "go" in another or "door" in another or "walk" in another:
                 add_item_to_inventory("Gem")
             else:
                 print_letter_by_letter("You look at the chest and notice there is a lock on it.")
+
+        elif "door" in choice:
+            print_letter_by_letter("You go through the door and find yourself ")
         
         elif "leave" in choice:
             print_letter_by_letter("You decide to leave the room.")
@@ -181,7 +188,7 @@ if "go" in another or "door" in another or "walk" in another:
                 print_letter_by_letter("You leave the key on the table.")
         
         else:
-            print("You decide not to interact with the chest.")
+            print_letter_by_letter("You decide not to interact with the chest.")
             
 else:
     print_letter_by_letter("\nYou opt for the right path, a sense of curiosity guiding your steps...")
