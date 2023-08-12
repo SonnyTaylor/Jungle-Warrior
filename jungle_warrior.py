@@ -148,24 +148,41 @@ another = input("What do you do? ").lower()
 if "go" in another or "door" in another or "walk" in another:
     print_letter_by_letter("\nYou decide to go through the door, your heart pounding with anticipation...")
     time.sleep(0.5)
-    print_letter_by_letter("\nAfter walking down the path for a while, you come across a small room with a table, a chest and another door.")
+    print_letter_by_letter("\nAfter walking down the path for a while, you come across a small room with a table, a chest, and another door.")
+    
     while True:  # Loop to allow the player to stay in the room
         choice = input("What do you do? ").lower()
+        
         if "chest" in choice:
-            if check_item_in_inventory("Key"):
+            if check_item_in_inventory("Mysterious key"):
                 print_letter_by_letter("You use the key to open the chest.")
                 print_letter_by_letter("You find a large ominous gem.")
                 add_item_to_inventory("Gem")
             else:
-                print("You do not have a key to open the chest.")
+                print_letter_by_letter("You look at the chest and notice there is a lock on it.")
+        
         elif "leave" in choice:
-            print("You decide to leave the room.")
+            print_letter_by_letter("You decide to leave the room.")
             break  # Exit the loop and continue with the story
+
+        elif "inventory" in choice:
+            display_inventory()
+        
+        elif "table" in choice:
+            print_letter_by_letter("You walk up to the table and brush off the dust.")
+            print_letter_by_letter("You notice a mysterious key.")
+            take_key = input("Do you take the key? ").lower()
+            
+            if "yes" in take_key:
+                add_item_to_inventory("Mysterious key")
+                print_letter_by_letter("You take the key and put it in your inventory.")
+            
+            elif "no" in take_key:
+                print_letter_by_letter("You leave the key on the table.")
+        
         else:
             print("You decide not to interact with the chest.")
+            
 else:
     print_letter_by_letter("\nYou opt for the right path, a sense of curiosity guiding your steps...")
     time.sleep(1)
-
-
-
