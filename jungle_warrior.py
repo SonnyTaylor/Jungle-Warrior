@@ -61,80 +61,79 @@ def get_computer_selection(health):
     print("....thinking....")
     time.sleep(sleep_time)
 
-    if health <= 35:
+    if (health <= 35):
         # Have the computer heal ~50% of its turns when <= 35
         result = random.randint(1, 6)
-        if result % 3 == 0:
+        if (result % 2 == 0):
             return 3
         else:
             return random.randint(1, 2)
-    elif health == 100:
+    elif (health == 100):
         return random.randint(1, 2)
     else:
         return random.randint(1, 3)
 
 
-
-
-def play_round(scorpion, human):
+def play_round(computer, human):
     game_in_progress = True
-    current_player = scorpion
+    current_player = computer
 
     while game_in_progress:
         # swap the current player each round
-        if current_player == scorpion:
+        if (current_player == computer):
             current_player = human
         else:
-            current_player = scorpion
+            current_player = computer
 
         print()
         print(
-            f"You have {human.health} health remaining and the {giant_scorpion} has {scorpion.health} health remaining."
-        )
+            "You have {0} health remaining and the "
+            "computer has {1} health remaining."
+            .format(human.health, computer.health))
         print()
 
-        if current_player == human:
+        if (current_player == human):
             print("Available attacks:")
-            print("1) Punch - Causes moderate damage.")
-            print("2) Wild Swing - high or low damage, depending on your luck!")
-            print("3) Restorative Herb - Restores a moderate amount of health.")
+            print("1) Electrocute - Causes moderate damage.")
+            print("2) Wild Swing - high or low damage, "
+                  "depending on your luck!")
+            print("3) Nature's Kiss - Restores a moderate amount of health.")
             move = get_selection()
         else:
-            move = get_computer_selection(scorpion.health)
+            move = get_computer_selection(computer.health)
 
-        if move == 1:
+        if (move == 1):
             damage = random.randrange(18, 25)
-            if current_player == human:
-                scorpion.calculate_damage(damage, human.name.capitalize())
-
-        elif move == 2:
+            if (current_player == human):
+                computer.calculate_damage(damage, human.name.capitalize())
+            else:
+                human.calculate_damage(damage, computer.name.capitalize())
+        elif (move == 2):
             damage = random.randrange(10, 35)
-            if current_player == human:
-                scorpion.calculate_damage(damage, human.name.capitalize())
-
-        elif move == 3:
+            if (current_player == human):
+                computer.calculate_damage(damage, human.name.capitalize())
+            else:
+                human.calculate_damage(damage, computer.name.capitalize())
+        elif (move == 3):
             heal = random.randrange(18, 25)
             current_player.calculate_heal(heal)
-            human.health += heal
-
         else:
-            print("The input was not valid. Please select a choice again.")
+            print ("The input was not valid. Please select a choice again.")
 
-        if human.health <= 0:
+        if (human.health == 0):
             print("Sorry, you lose!")
-            scorpion.wins += 1
+            computer.wins += 1
             game_in_progress = False
 
-        if scorpion.health <= 0:
-            print("Congratulations, you beat the Giant Scorpion!")
+        if (computer.health == 0):
+            print("Congratulations, you beat the computer!")
             human.wins += 1
             game_in_progress = False
 
 
-
 def start_game():
 
-    computer = Player(Fore.RED + "Giant Scorpion" + Fore.RESET)
+    computer = Player(giant_scorpion)
 
     name = username_color
     human = Player(name)
@@ -150,9 +149,6 @@ def start_game():
         human.health = 100
         play_round(computer, human)
         print()
-        response = input("Play another round?(Y/N)")
-        if (response.lower() == "n"):
-            break
 
 
 # Function to add an item to the inventory file
