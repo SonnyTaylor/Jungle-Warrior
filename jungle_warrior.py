@@ -79,7 +79,7 @@ def continue_game():
     
     if check_item_in_inventory("Gem"):
         print_letter_by_letter("You notice a slot on the pedestal that seems to fit the gem you obtained earlier.")
-        use_gem = input("Do you want to place the gem on the pedestal? (Yes/No) ").lower()
+        use_gem = input("Do you want to place the gem on the pedestal? ").lower()
         
         if "yes" in use_gem:
             print_letter_by_letter("As you place the gem on the pedestal, a hidden mechanism is triggered.")
