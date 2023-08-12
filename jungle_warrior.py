@@ -17,24 +17,24 @@ class Player():
             self.health = 0
             if (overkill > 0):
                 print("{0} takes fatal damage from {1}, with {2} overkill!"
-                      .format(self.name.capitalize(), attacker, overkill))
+                    .format(self.name.capitalize(), attacker, overkill))
             else:
                 print("{0} takes fatal damage from {1}!"
-                      .format(self.name.capitalize(), attacker))
+                    .format(self.name.capitalize(), attacker))
         else:
             self.health -= damage_amount
             print("{0} takes {1} damage from {2}!"
-                  .format(self.name.capitalize(), damage_amount, attacker))
+                .format(self.name.capitalize(), damage_amount, attacker))
 
     def calculate_heal(self, heal_amount):
         if (heal_amount + self.health > 100):
             self.health = 100
             print("{0} heals back to full health!"
-                  .format(self.name.capitalize()))
+                .format(self.name.capitalize()))
         else:
             self.health += heal_amount
             print("{0} heals for {1}!"
-                  .format(self.name.capitalize(), heal_amount))
+                .format(self.name.capitalize(), heal_amount))
 
 
 def parse_int(input):
@@ -122,7 +122,7 @@ def play_round(computer, human):
             print("Available attacks:")
             print("1) Punch - Causes moderate damage.")
             print("2) Wild Swing - high or low damage, "
-                  "depending on your luck!")
+                "depending on your luck!")
             print("3) Herbal Drink - Restores a moderate amount of health.")
             move = get_selection()
         else:
@@ -176,7 +176,6 @@ def start_game():
         print()
         if (computer.health == 0):
             continue_game()  # Call the function to continue the game
-       
 
 
 # Function to add an item to the inventory file
@@ -305,8 +304,7 @@ text = """
   ▒ ░░   ░░ ▒░ ░░ ▒░   ░  ░▒▓▒░ ░  ░░ ▒░▓  ░░░ ▒░ ░   ░ ▓░▒ ▒   ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒▓ ░▒▓░░▓  ░ ▒░▒░▒░ ░ ▒▓ ░▒▓░
     ░     ░ ░  ░░  ░      ░░▒ ░     ░ ░ ▒  ░ ░ ░  ░     ▒ ░ ░    ▒   ▒▒ ░  ░▒ ░ ▒░  ░▒ ░ ▒░ ▒ ░  ░ ▒ ▒░   ░▒ ░ ▒░
   ░         ░   ░      ░   ░░         ░ ░      ░        ░   ░    ░   ▒     ░░   ░   ░░   ░  ▒ ░░ ░ ░ ▒    ░░   ░ 
-            ░  ░       ░                ░  ░   ░  ░       ░          ░  ░   ░        ░      ░      ░ ░     ░     
-                                                                                                                 
+            ░  ░       ░                ░  ░   ░  ░       ░          ░  ░   ░        ░      ░      ░ ░     ░                                                                                                                
 """
 
 # Split the text into lines
@@ -321,7 +319,7 @@ for line in lines:
 # Get user's name
 user_name = input("What is your name? ")
 if user_name == "Sonny" or "Cooper" or "Leroy":
-    print("yo whats good my g")
+    print("yo whats good my g, from sonny")
     
 username_color = Fore.GREEN + user_name + Style.RESET_ALL
 
