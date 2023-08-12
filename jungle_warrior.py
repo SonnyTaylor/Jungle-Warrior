@@ -61,74 +61,75 @@ def get_computer_selection(health):
     print("....thinking....")
     time.sleep(sleep_time)
 
-    if (health <= 35):
+    if health <= 35:
         # Have the computer heal ~50% of its turns when <= 35
         result = random.randint(1, 6)
-        if (result % 2 == 0):
+        if result % 3 == 0:
             return 3
         else:
             return random.randint(1, 2)
-    elif (health == 100):
+    elif health == 100:
         return random.randint(1, 2)
     else:
         return random.randint(1, 3)
 
 
-def play_round(computer, human):
+
+
+def play_round(scorpion, human):
     game_in_progress = True
-    current_player = computer
+    current_player = scorpion
 
     while game_in_progress:
         # swap the current player each round
-        if (current_player == computer):
+        if current_player == scorpion:
             current_player = human
         else:
-            current_player = computer
+            current_player = scorpion
 
         print()
         print(
-            "You have {0} health remaining and the "
-            f"{giant_scorpion} has {1} health remaining."
-            .format(human.health, computer.health))
+            f"You have {human.health} health remaining and the {giant_scorpion} has {scorpion.health} health remaining."
+        )
         print()
 
-        if (current_player == human):
+        if current_player == human:
             print("Available attacks:")
             print("1) Punch - Causes moderate damage.")
-            print("2) Wild Swing - high or low damage, "
-                  "depending on your luck!")
+            print("2) Wild Swing - high or low damage, depending on your luck!")
             print("3) Restorative Herb - Restores a moderate amount of health.")
             move = get_selection()
         else:
-            move = get_computer_selection(computer.health)
+            move = get_computer_selection(scorpion.health)
 
-        if (move == 1):
+        if move == 1:
             damage = random.randrange(18, 25)
-            if (current_player == human):
-                computer.calculate_damage(damage, human.name.capitalize())
-            else:
-                human.calculate_damage(damage, computer.name.capitalize())
-        elif (move == 2):
+            if current_player == human:
+                scorpion.calculate_damage(damage, human.name.capitalize())
+
+        elif move == 2:
             damage = random.randrange(10, 35)
-            if (current_player == human):
-                computer.calculate_damage(damage, human.name.capitalize())
-            else:
-                human.calculate_damage(damage, computer.name.capitalize())
-        elif (move == 3):
+            if current_player == human:
+                scorpion.calculate_damage(damage, human.name.capitalize())
+
+        elif move == 3:
             heal = random.randrange(18, 25)
             current_player.calculate_heal(heal)
-        else:
-            print ("The input was not valid. Please select a choice again.")
+            human.health += heal
 
-        if (human.health == 0):
+        else:
+            print("The input was not valid. Please select a choice again.")
+
+        if human.health <= 0:
             print("Sorry, you lose!")
-            computer.wins += 1
+            scorpion.wins += 1
             game_in_progress = False
 
-        if (computer.health == 0):
-            print("Congratulations, you beat the computer!")
+        if scorpion.health <= 0:
+            print("Congratulations, you beat the Giant Scorpion!")
             human.wins += 1
             game_in_progress = False
+
 
 
 def start_game():
@@ -295,6 +296,9 @@ for line in lines:
 
 # Get user's name
 user_name = input("What is your name? ")
+if user_name == "Sonny":
+    print("yo whats good g")
+    
 username_color = Fore.GREEN + user_name + Style.RESET_ALL
 
 # Greet the user
@@ -309,7 +313,7 @@ another = input("What do you do? ").lower()
 
 # Begin the journey
 if "go" in another or "door" in another or "walk" in another or "open" in another:
-    print_letter_by_letter("\nYou decide to go through the door, your heart pounding with anticipation...")
+    print_letter_by_letter("You decide to go through the door, your heart pounding with anticipation...")
     time.sleep(0.5)
     print_letter_by_letter("\nAfter walking down the path for a while, you come across a small room with a table, a chest, and another door.")
     
@@ -342,14 +346,14 @@ if "go" in another or "door" in another or "walk" in another or "open" in anothe
             mosaic_image.show()
             
             step1 = input("Where do you step on the first tile? ")
-            if step1.lower() == "sky" or step1.lower() == "air":
+            if step1.lower() == "sky" or step1.lower() == "air" or step1.lower() == "blue":
                 print_letter_by_letter(correct_sensations["sky"])
             else:
                 print_letter_by_letter("The ground gives way beneath your feet, and you fall into a pit. Your journey ends here.")
                 quit()
             
             step2 = input("Where do you step on the second tile? ")
-            if step2.lower() == "earth" or step2.lower() == "hill":
+            if step2.lower() == "earth" or step2.lower() == "hill" or step2.lower() == "grass" or step2.lower() == "green":
                 print_letter_by_letter(correct_sensations["earth"])
             else:
                 print_letter_by_letter("Arrows shoot out from the walls as you step on the wrong tile. Your adventure comes to an abrupt end.")
