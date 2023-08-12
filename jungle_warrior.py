@@ -7,6 +7,18 @@ import os
 giant_scorpion = Fore.RED + "Giant Scorpion" + Fore.RESET # Create a color-formatted string
 
 def clear_terminal():
+    """
+    Clears the terminal screen.
+
+    This function uses the 'os' module to clear the terminal screen based on the operating system.
+    On Windows, it uses the 'cls' command. On Unix-like systems, it uses the 'clear' command.
+
+    Note:
+        This function's behavior depends on the 'os' module and the operating system's terminal commands.
+
+    Example usage:
+        clear_terminal()  # Clears the terminal screen.
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
     
 class Player():
