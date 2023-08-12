@@ -134,7 +134,7 @@ def start_game():
 
     computer = Player("Computer")
 
-    name = input("Please enter your name: ")
+    name = user_name
     human = Player(name)
 
     keep_playing = True
@@ -368,52 +368,7 @@ if "go" in another or "door" in another or "walk" in another or "open" in anothe
             print_letter_by_letter("Congratulations! You successfully step on each tile in the correct order. A hidden door opens, revealing a new path ahead.")
             print_letter_by_letter("As you move forward, you enter a dimly lit chamber. A gargantuan scorpion lurks in the shadows, its stinger poised for attack.")
             print_letter_by_letter("It's a fight for survival!")
-
-            player_health = 100
-            scorpion_health = 150
-
-            while player_health > 0 and scorpion_health > 0:
-                print("Your health:", player_health)
-                print("Scorpion's health:", scorpion_health)
-                print("What do you do?")
-                print("1. Attack")
-                print("2. Defend")
-                
-                choice = input("> ")
-                
-                if choice == "1":
-                    player_attack = random.randint(15, 25)
-                    scorpion_defense = random.randint(10, 20)
-                    player_damage = max(player_attack - scorpion_defense, 0)
-                    scorpion_health -= player_damage
-                    print_letter_by_letter(f"You strike the scorpion for {player_damage} damage!")
-                    
-                    scorpion_attack = random.randint(10, 20)
-                    player_defense = random.randint(5, 15)
-                    scorpion_damage = max(scorpion_attack - player_defense, 0)
-                    player_health -= scorpion_damage
-                    print_letter_by_letter(f"The scorpion retaliates, dealing {scorpion_damage} damage to you.")
-                
-                elif choice == "2":
-                    player_defense = random.randint(10, 20)
-                    scorpion_attack = random.randint(5, 15)
-                    player_damage = max(scorpion_attack - player_defense, 0)
-                    player_health -= player_damage
-                    print_letter_by_letter(f"You defend against the scorpion's attack, but still take {player_damage} damage.")
-                    
-                else:
-                    print_letter_by_letter("You hesitate and the scorpion seizes the opportunity to strike, dealing a significant blow.")
-                    player_health -= random.randint(20, 30)
-                
-                print("\n")
-                
-            if player_health <= 0:
-                print_letter_by_letter("Your vision blurs as you collapse to the ground. The scorpion's stinger pierces your body, and darkness overtakes you.")
-                print_letter_by_letter("Your journey ends here.")
-            else:
-                print_letter_by_letter("With a final blow, you defeat the gargantuan scorpion. Its lifeless body collapses to the ground.")
-                print_letter_by_letter("Exhausted but victorious, you catch your breath and continue your quest.")
-
+            start_game()
 
         elif "leave" in choice:
             print_letter_by_letter("You decide to leave the room.")
