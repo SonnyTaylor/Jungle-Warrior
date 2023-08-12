@@ -88,7 +88,7 @@ def play_round(computer, human):
         print()
         print(
             "You have {0} health remaining and the "
-            "computer has {1} health remaining."
+            "Enemy has {1} health remaining."
             .format(human.health, computer.health))
         print()
 
@@ -126,10 +126,9 @@ def play_round(computer, human):
             game_in_progress = False
 
         if (computer.health == 0):
-            print(f"Congratulations, you beat the {giant_scorpion}!")
+            print("Congratulations, you beat the {giant_scorpion}!")
             human.wins += 1
             game_in_progress = False
-
 
 def start_game():
 
@@ -149,6 +148,7 @@ def start_game():
         human.health = 100
         play_round(computer, human)
         print()
+       
 
 
 # Function to add an item to the inventory file
@@ -372,7 +372,9 @@ if "go" in another or "door" in another or "walk" in another or "open" in anothe
             print_letter_by_letter("Congratulations! You successfully step on each tile in the correct order. A hidden door opens, revealing a new path ahead.")
             print_letter_by_letter("As you move forward, you enter a dimly lit chamber. A gargantuan scorpion lurks in the shadows, its stinger poised for attack.")
             print_letter_by_letter("It's a fight for survival!")
+            time.sleep(1)
             start_game()
+
 
         elif "leave" in choice:
             print_letter_by_letter("You decide to leave the room.")
