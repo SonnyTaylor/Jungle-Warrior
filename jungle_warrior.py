@@ -79,7 +79,7 @@ def continue_game():
     
     if check_item_in_inventory("Gem"):
         print_letter_by_letter("You notice a slot on the pedestal that seems to fit the gem you obtained earlier.")
-        use_gem = input("Do you want to place the gem on the pedestal? (Yes/No) ").lower()
+        use_gem = input("Do you want to place the gem on the pedestal? ").lower()
         
         if "yes" in use_gem:
             print_letter_by_letter("As you place the gem on the pedestal, a hidden mechanism is triggered.")
@@ -318,8 +318,8 @@ for line in lines:
 
 # Get user's name
 user_name = input("What is your name? ")
-if user_name == "Sonny":
-    print("yo whats good g")
+if user_name == "Sonny" or "Cooper" or "Leroy":
+    print("yo whats good my g")
     
 username_color = Fore.GREEN + user_name + Style.RESET_ALL
 
@@ -397,6 +397,38 @@ if "go" in another or "door" in another or "walk" in another or "open" in anothe
 
             print_letter_by_letter("Congratulations! You successfully step on each tile in the correct order. A hidden door opens, revealing a new path ahead.")
             print_letter_by_letter("As you move forward, you enter a dimly lit chamber. A gargantuan scorpion lurks in the shadows, its stinger poised for attack.")
+            pattern = [
+                        "/|  |\\            /|  |\\",
+                        "/|  |\\            /|  |\\",
+                        "/ |  | \\          / |  | \\",
+                        "| |  | |          | |  | |",
+                        "\\  \\/  /  __  __  \\  \\/  /",
+                        " \\    /  / /  \\ \\  \\    /",
+                        "  \\  /   \\ \\__/ /   \\  /",
+                        "  \\  /   /      \\   \\  /",
+                        " _ \\ \\__/ O    O \\__/ / _",
+                        " \\\\ \\___          ___/ //",
+                        "_  \\\\___/  ______  \\___//  _",
+                        "\\\\  ----(          )----  //",
+                        " \\\\_____( ________ )_____//",
+                        "  ~-----(          )-----~ _",
+                        "   _____( ________ )_____  \\\\",
+                        "  /,----(          )----  _//",
+                        " //     (  ______  )     /  \\",
+                        " ~       \\        /      \\  /",
+                        "          \\  __  /       / /",
+                        "           \\    /       / /",
+                        "            \\   \\      / /",
+                        "             \\   ~----~ /",
+                        "              \\________/"
+                    ]
+
+            color = Fore.YELLOW  # Brown color from Colorama
+            for line in pattern:
+                print(color + line)
+
+            print(Style.RESET_ALL)  # Reset the color
+            time.sleep(2)
             print_letter_by_letter("It's a fight for survival!")
             time.sleep(1)
             start_game()
@@ -429,3 +461,4 @@ elif "leave" in another or "no" in another or "exit" in another:
 
 else:
     print_letter_by_letter("INVALID OPTION")
+    print_letter_by_letter("im too lazy to fix this so just restart program, and maybe next time learn to spell")
