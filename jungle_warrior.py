@@ -72,7 +72,31 @@ def get_computer_selection(health):
         return random.randint(1, 2)
     else:
         return random.randint(1, 3)
-
+    
+def continue_game():
+    print_letter_by_letter("You breathe a sigh of relief after vanquishing the beast.")
+    print_letter_by_letter("You walk past its limp body and make your way to the next room where you find a large pedestal and a trapdoor on the roof.")
+    
+    if check_item_in_inventory("Gem"):
+        print_letter_by_letter("You notice a slot on the pedestal that seems to fit the gem you obtained earlier.")
+        use_gem = input("Do you want to place the gem on the pedestal? (Yes/No) ").lower()
+        
+        if "yes" in use_gem:
+            print_letter_by_letter("As you place the gem on the pedestal, a hidden mechanism is triggered.")
+            print_letter_by_letter("The walls begin to rumble, and the ground beneath you shakes.")
+            print_letter_by_letter("A secret passage opens before you, revealing a new path forward.")
+            print_letter_by_letter("You step into the passage, ready to face whatever challenges await.")
+            # Implement the next area of your adventure here
+        else:
+            print_letter_by_letter("You decide not to place the gem on the pedestal.")
+            print_letter_by_letter("Curiosity piqued, you climb up to the trapdoor on the roof, wondering what lies above.")
+            print_letter_by_letter("You open the trapdoor and find yourself in a dimly lit attic space.")
+            print_letter_by_letter("The dusty attic seems to hold secrets of its own, and you begin to explore.")
+            # Implement the attic exploration section here (if desired)
+    else:
+        print_letter_by_letter("Without the gem, you are left with only one option: the trapdoor on the roof.")
+        print_letter_by_letter("Curiosity piqued, you climb up to the trapdoor and open it.")
+        print_letter_by_letter("You find yourself in a dark and narrow passageway that leads you deeper into the unknown.")
 
 def play_round(computer, human):
     game_in_progress = True
@@ -148,6 +172,8 @@ def start_game():
         human.health = 100
         play_round(computer, human)
         print()
+        if (computer.health == 0):
+            continue_game()  # Call the function to continue the game
        
 
 
