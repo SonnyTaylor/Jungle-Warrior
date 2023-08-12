@@ -94,10 +94,10 @@ def play_round(computer, human):
 
         if (current_player == human):
             print("Available attacks:")
-            print("1) Electrocute - Causes moderate damage.")
+            print("1) Punch - Causes moderate damage.")
             print("2) Wild Swing - high or low damage, "
                   "depending on your luck!")
-            print("3) Nature's Kiss - Restores a moderate amount of health.")
+            print("3) Herbal Drink - Restores a moderate amount of health.")
             move = get_selection()
         else:
             move = get_computer_selection(computer.health)
@@ -126,7 +126,7 @@ def play_round(computer, human):
             game_in_progress = False
 
         if (computer.health == 0):
-            print("Congratulations, you beat the computer!")
+            print(f"Congratulations, you beat the {giant_scorpion}!")
             human.wins += 1
             game_in_progress = False
 
