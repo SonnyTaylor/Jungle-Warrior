@@ -3,7 +3,7 @@ from colorama import Fore, Style
 import time
 from PIL import Image
 
-giant_scorpion = Fore.RED + "Giant Scorpion" + Fore.RESET
+giant_scorpion = Fore.RED + "Giant Scorpion" + Fore.RESET # Create a color-formatted string
 
 class Player():
     def __init__(self, name):
@@ -72,7 +72,9 @@ def get_computer_selection(health):
         return random.randint(1, 2)
     else:
         return random.randint(1, 3)
-    
+
+#this continues after the fight sequence.
+#The only reason this code is here is because i was stupid and didnt make rooms as functions. 
 def continue_game():
     print_letter_by_letter("You breathe a sigh of relief after vanquishing the beast.")
     print_letter_by_letter("You walk past its limp body and make your way to the next room where you find a large pedestal and a trapdoor on the roof.")
