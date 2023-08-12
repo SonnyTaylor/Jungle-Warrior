@@ -1,7 +1,7 @@
 import random
 from colorama import Fore, Style
 import time
-
+from PIL import Image
 # Function to add an item to the inventory file
 
 
@@ -117,7 +117,7 @@ text = """
 ▓██▄██▓ ▓▓█  ░██░▓██▒  ▐▌██▒░▓█  ██▓▒██░    ▒▓█  ▄    ░█░ █ ░█ ░██▄▄▄▄██ ▒██▀▀█▄  ▒██▀▀█▄  ░██░▒██   ██░▒██▀▀█▄  
  ▓███▒  ▒▒█████▓ ▒██░   ▓██░░▒▓███▀▒░██████▒░▒████▒   ░░██▒██▓  ▓█   ▓██▒░██▓ ▒██▒░██▓ ▒██▒░██░░ ████▓▒░░██▓ ▒██▒
  ▒▓▒▒░  ░▒▓▒ ▒ ▒ ░ ▒░   ▒ ▒  ░▒   ▒ ░ ▒░▓  ░░░ ▒░ ░   ░ ▓░▒ ▒   ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒▓ ░▒▓░░▓  ░ ▒░▒░▒░ ░ ▒▓ ░▒▓░
- ▒ ░▒░  ░░▒░ ░ ░ ░ ░░   ░ ▒░  ░   ░ ░ ░ ▒  ░ ░ ░  ░     ▒ ░ ░    ▒   ▒▒ ░  ░▒ ░ ▒░  ░▒ ░ ▒░ ▒ ░  ░ ▒ ▒░   ░▒ ░ ▒░
+ ▒ ░▒░  ░░▒░ ░ ░ ░ ░░   ░ ▒░  ░   ░ ░ ░ ▒  ░ ░ ░  ░     ▒ ░ ░    ▒   ▒▒ ░  ░▒ ░ ▒░  ░▒ ░ ░░▒ ░░ ░ ░ ▒    ░░   ░ 
  ░ ░ ░   ░░░ ░ ░    ░   ░ ░ ░ ░   ░   ░ ░      ░        ░   ░    ░   ▒     ░░   ░   ░░   ░  ▒ ░░ ░ ░ ▒    ░░   ░ 
  ░   ░     ░              ░       ░     ░  ░   ░  ░       ░          ░  ░   ░        ░      ░      ░ ░     ░     
 """
@@ -144,11 +144,7 @@ time.sleep(1)
 print_letter_by_letter("The Door lies ahead")
 another = input("What do you do? ").lower()
 
-
-
 # Begin the journey
-# this probably pretty crap code, but it works anyway sooo...
-# also you might wanna rename variables better sometime
 if "go" in another or "door" in another or "walk" in another or "open" in another:
     print_letter_by_letter("\nYou decide to go through the door, your heart pounding with anticipation...")
     time.sleep(0.5)
@@ -166,7 +162,41 @@ if "go" in another or "door" in another or "walk" in another or "open" in anothe
                 print_letter_by_letter("You look at the chest and notice there is a lock on it.")
 
         elif "door" in choice:
-            print_letter_by_letter("You go through the door and find yourself ")
+            print_letter_by_letter("You go through the door and find yourself in a long corridor with a mosaic on the floor and a poem on the wall that reads:")
+            print_letter_by_letter("Dawn breaks with stirring air,")
+            print_letter_by_letter("As sun shines down on new day fair")
+            print_letter_by_letter("\"Midday blaze bakes earth and grass,")
+            print_letter_by_letter("The farmer waits for heat to pass")
+            print_letter_by_letter("\"Evening cool brings water, wine,")
+            print_letter_by_letter("Drink and laughter passing time")
+            print_letter_by_letter("\"Night sees shining, roaring fire,")
+            print_letter_by_letter("as wood and coals burn on the pyre\"")
+            
+            mosaic_image = Image.open("mosaic_image.png")  # Replace with the actual image file path
+            mosaic_image.show()
+            
+            step1 = input("Step on the first tile: ")
+            if step1.lower() != "air":
+                print_letter_by_letter("You step on the wrong tile and suddenly the ground gives way. You fall into a pit and your journey ends here.")
+                # End the game
+            
+            step2 = input("Step on the second tile: ")
+            if step2.lower() != "earth":
+                print_letter_by_letter("A trap is triggered as you step on the wrong tile. Arrows shoot out from the walls, and you fall to the ground, lifeless. Your adventure is over.")
+                # End the game
+            
+            step3 = input("Step on the third tile: ")
+            if step3.lower() != "water":
+                print_letter_by_letter("As your foot touches the tile, the ground beneath you shakes and crumbles. You tumble into darkness, and your journey comes to an abrupt end.")
+                # End the game
+
+            step4 = input("Step on the fourth tile: ")
+            if step4.lower() != "fire":
+                print_letter_by_letter("You feel a searing heat as you step on the wrong tile. Flames engulf you, and you are consumed by the fire. Your quest ends here.")
+                # End the game
+
+            print_letter_by_letter("Congratulations! You successfully step on each tile in the correct order. A hidden door opens, revealing a new path ahead.")
+            print_letter_by_letter("You continue your adventure...")
         
         elif "leave" in choice:
             print_letter_by_letter("You decide to leave the room.")
