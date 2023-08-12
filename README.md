@@ -1,17 +1,22 @@
-# Ancient Adventure Game
+## Dungeon Warrior
 
-Welcome to the Ancient Adventure Game! Embark on a journey through mysterious temples, solve puzzles, and face formidable foes. This Python text-based game combines storytelling, decision-making, and strategy as you navigate through different challenges.
+A simple CLI text adventure game, created for a school project.
 
-## Installation
+### Project objectives
 
-Before you begin, make sure you have the following libraries installed:
+- Combat system with different attacks and enemys.
+- Creating an inventory system with the ability to pickup, drop and check it when needed.
+- Intricate puzzles with images
 
-- `colorama`: For colorful text output.
-- `PIL`: For displaying images (mosaic puzzle).
-- `time`: For adding delays to text output.
+### Usage instructions
 
-Install the required libraries using the following command:
+#### Note: This game uses Python 3 ONLY. Using Python 2 or below will not work!
 
-```bash
-pip install colorama pillow
-```
+- Get sources either by downloading `.zip` file and extracting it
+- Or by cloning the master branch `git clone https://github.com/salaminipples/Jungle-Warrior.git`
+- To setup: run `SETUP.bat`
+- To play: run `RUNME.bat`
+
+### Game Modules
+
+- The game mainly uses two modules: Pillow (to show an image for a puzzle) and colorama (an amazing ANSI sequence text colorizer).
