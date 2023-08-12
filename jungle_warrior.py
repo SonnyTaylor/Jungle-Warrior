@@ -2,9 +2,13 @@ import random
 from colorama import Fore, Style
 import time
 from PIL import Image
+import os
 
 giant_scorpion = Fore.RED + "Giant Scorpion" + Fore.RESET # Create a color-formatted string
 
+def clear_terminal():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    
 class Player():
     def __init__(self, name):
         self.health = 100
@@ -88,7 +92,7 @@ def continue_game():
             print_letter_by_letter("The walls begin to rumble, and the ground beneath you shakes.")
             print_letter_by_letter("A secret passage opens before you, revealing a new path forward.")
             print_letter_by_letter("You step into the passage, ready to face whatever challenges await.")
-            # Implement the next area of your adventure here
+            print_letter_by_letter("")
         else:
             print_letter_by_letter("You decide not to place the gem on the pedestal.")
             print_letter_by_letter("Curiosity piqued, you climb up to the trapdoor on the roof, wondering what lies above.")
@@ -428,9 +432,9 @@ if "go" in another or "door" in another or "walk" in another or "open" in anothe
                 print(color + line)
 
             print(Style.RESET_ALL)  # Reset the color
-            time.sleep(2)
             print_letter_by_letter("It's a fight for survival!")
-            time.sleep(1)
+            time.sleep(3)
+            clear_terminal()
             start_game()
 
 
