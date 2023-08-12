@@ -3,6 +3,8 @@ from colorama import Fore, Style
 import time
 from PIL import Image
 
+giant_scorpion = Fore.RED + "Giant Scorpion" + Fore.RESET
+
 class Player():
     def __init__(self, name):
         self.health = 100
@@ -86,16 +88,16 @@ def play_round(computer, human):
         print()
         print(
             "You have {0} health remaining and the "
-            "computer has {1} health remaining."
+            f"{giant_scorpion} has {1} health remaining."
             .format(human.health, computer.health))
         print()
 
         if (current_player == human):
             print("Available attacks:")
-            print("1) Electrocute - Causes moderate damage.")
+            print("1) Punch - Causes moderate damage.")
             print("2) Wild Swing - high or low damage, "
                   "depending on your luck!")
-            print("3) Nature's Kiss - Restores a moderate amount of health.")
+            print("3) Restorative Herb - Restores a moderate amount of health.")
             move = get_selection()
         else:
             move = get_computer_selection(computer.health)
@@ -130,19 +132,18 @@ def play_round(computer, human):
 
 
 def start_game():
-    print("Welcome to the As-Yet-Unnamed turn-based battle game!")
 
-    computer = Player("Computer")
+    computer = Player(Fore.RED + "Giant Scorpion" + Fore.RESET)
 
-    name = user_name
+    name = username_color
     human = Player(name)
 
     keep_playing = True
 
     while (keep_playing is True):
         print("Current Score:")
-        print("You - {0}".format(human.wins))
-        print("Computer - {0}".format(computer.wins))
+        print(f"{username_color} - {0}".format(human.wins))
+        print(f"{giant_scorpion} - {0}".format(computer.wins))
 
         computer.health = 100
         human.health = 100
@@ -294,9 +295,10 @@ for line in lines:
 
 # Get user's name
 user_name = input("What is your name? ")
+username_color = Fore.GREEN + user_name + Style.RESET_ALL
 
 # Greet the user
-print_letter_by_letter(f"Hello, {Fore.BLUE}{user_name}{Style.RESET_ALL}! Welcome to an ancient adventure.")
+print_letter_by_letter(f"Hello, {username_color}! Welcome to an ancient adventure.")
 time.sleep(1)
 
 # Set the stage
@@ -325,14 +327,16 @@ if "go" in another or "door" in another or "walk" in another or "open" in anothe
 
         elif "door" in choice:
             print_letter_by_letter("You go through the door and find yourself in a long corridor with a mosaic on the floor and a poem on the wall that reads:")
-            print_letter_by_letter("Dawn breaks with stirring air,")
-            print_letter_by_letter("As sun shines down on new day fair")
-            print_letter_by_letter("\"Midday blaze bakes earth and grass,")
-            print_letter_by_letter("The farmer waits for heat to pass")
-            print_letter_by_letter("\"Evening cool brings water, wine,")
-            print_letter_by_letter("Drink and laughter passing time")
-            print_letter_by_letter("\"Night sees shining, roaring fire,")
-            print_letter_by_letter("as wood and coals burn on the pyre\"")
+            print_letter_by_letter(Fore.RED + "Dawn breaks with stirring air,")
+            print_letter_by_letter(Fore.RED + "As sun shines down on new day fair")
+            print_letter_by_letter(Fore.RED + "Midday blaze bakes earth and grass,")
+            print_letter_by_letter(Fore.RED + "The farmer waits for heat to pass")
+            print_letter_by_letter(Fore.RED + "Evening cool brings water, wine,")
+            print_letter_by_letter(Fore.RED + "Drink and laughter passing time")
+            print_letter_by_letter(Fore.RED + "Night sees shining, roaring fire,")
+            print_letter_by_letter(Fore.RED + "as wood and coals burn on the pyre")
+            print_letter_by_letter(Fore.RESET)
+
             
             mosaic_image = Image.open("mosaic_image.png")  # Replace with the actual image file path
             mosaic_image.show()
