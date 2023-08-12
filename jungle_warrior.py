@@ -379,7 +379,6 @@ if "go" in another or "door" in another or "walk" in another or "open" in anothe
             print_letter_by_letter(Fore.RED + "Night sees shining, roaring fire,")
             print_letter_by_letter(Fore.RED + "as wood and coals burn on the pyre")
             print_letter_by_letter(Fore.RESET)
-
             
             mosaic_image = Image.open("mosaic_image.png")  # Replace with the actual image file path
             mosaic_image.show()
