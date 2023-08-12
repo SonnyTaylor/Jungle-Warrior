@@ -92,7 +92,7 @@ def continue_game():
             print_letter_by_letter("The walls begin to rumble, and the ground beneath you shakes.")
             print_letter_by_letter("A secret passage opens before you, revealing a new path forward.")
             print_letter_by_letter("You step into the passage, ready to face whatever challenges await.")
-            print_letter_by_letter("")
+            print_letter_by_letter("poop")
         else:
             print_letter_by_letter("You decide not to place the gem on the pedestal.")
             print_letter_by_letter("Curiosity piqued, you climb up to the trapdoor on the roof, wondering what lies above.")
