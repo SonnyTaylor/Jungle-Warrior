@@ -110,6 +110,17 @@ def print_letter_by_letter(text, delay=0.01):
 # Reset the inventory file
 reset_inventory_file()
 
+correct_sensations = {
+    "sky": "You feel a gentle breeze and a sense of weightlessness.",
+    "earth": "The ground feels solid and reassuring beneath your feet.",
+    "water": "Coolness and fluidity embrace your step, like a soothing embrace.",
+    "fire": "A warm and invigorating energy courses through your body as you step onto the fiery tile."
+}
+
+
+incorrect_sound = "The ground beneath your foot feels unsettling."
+
+game_over = False
 text = """
  ▄▄▄██▀ ▀█    ██  ███▄    █   ▄████  ██▓    ▓█████     █     █░ ▄▄▄       ██▀███   ██▀███   ██▓ ▒█████   ██▀███  
    ▒██   ██  ▓██▒ ██ ▀█   █  ██▒ ▀█▒▓██▒    ▓█   ▀    ▓█░ █ ░█░▒████▄    ▓██ ▒ ██▒▓██ ▒ ██▒▓██▒▒██▒  ██▒▓██ ▒ ██▒
@@ -161,6 +172,7 @@ if "go" in another or "door" in another or "walk" in another or "open" in anothe
             else:
                 print_letter_by_letter("You look at the chest and notice there is a lock on it.")
 
+
         elif "door" in choice:
             print_letter_by_letter("You go through the door and find yourself in a long corridor with a mosaic on the floor and a poem on the wall that reads:")
             print_letter_by_letter("Dawn breaks with stirring air,")
@@ -175,29 +187,37 @@ if "go" in another or "door" in another or "walk" in another or "open" in anothe
             mosaic_image = Image.open("mosaic_image.png")  # Replace with the actual image file path
             mosaic_image.show()
             
-            step1 = input("Step on the first tile: ")
-            if step1.lower() != "air":
-                print_letter_by_letter("You step on the wrong tile and suddenly the ground gives way. You fall into a pit and your journey ends here.")
-                # End the game
+            step1 = input("Where do you step on the first tile? ")
+            if step1.lower() == "sky" or step1.lower() == "air":
+                print_letter_by_letter(correct_sensations["sky"])
+            else:
+                print_letter_by_letter("The ground gives way beneath your feet, and you fall into a pit. Your journey ends here.")
+                quit()
             
-            step2 = input("Step on the second tile: ")
-            if step2.lower() != "earth":
-                print_letter_by_letter("A trap is triggered as you step on the wrong tile. Arrows shoot out from the walls, and you fall to the ground, lifeless. Your adventure is over.")
-                # End the game
+            step2 = input("Where do you step on the second tile? ")
+            if step2.lower() == "earth" or step2.lower() == "hill":
+                print_letter_by_letter(correct_sensations["earth"])
+            else:
+                print_letter_by_letter("Arrows shoot out from the walls as you step on the wrong tile. Your adventure comes to an abrupt end.")
+                quit()
             
-            step3 = input("Step on the third tile: ")
-            if step3.lower() != "water":
-                print_letter_by_letter("As your foot touches the tile, the ground beneath you shakes and crumbles. You tumble into darkness, and your journey comes to an abrupt end.")
-                # End the game
-
-            step4 = input("Step on the fourth tile: ")
-            if step4.lower() != "fire":
-                print_letter_by_letter("You feel a searing heat as you step on the wrong tile. Flames engulf you, and you are consumed by the fire. Your quest ends here.")
-                # End the game
+            step3 = input("Where do you step on the third tile? ")
+            if step3.lower() == "water" or step3.lower() == "river":
+                print_letter_by_letter(correct_sensations["water"])
+            else:
+                print_letter_by_letter("The ground shakes and crumbles beneath your feet. You fall into darkness, and your journey ends here.")
+                quit()
+            
+            step4 = input("Where do you step on the fourth tile? ")
+            if step4.lower() == "fire":
+                print_letter_by_letter(correct_sensations["fire"])
+            else:
+                print_letter_by_letter("You feel a searing heat as you step on the wrong tile. Flames engulf you, and your quest ends here.")
+                quit()
 
             print_letter_by_letter("Congratulations! You successfully step on each tile in the correct order. A hidden door opens, revealing a new path ahead.")
             print_letter_by_letter("You continue your adventure...")
-        
+
         elif "leave" in choice:
             print_letter_by_letter("You decide to leave the room.")
             break  # Exit the loop and continue with the story
@@ -220,6 +240,8 @@ if "go" in another or "door" in another or "walk" in another or "open" in anothe
         else:
             print_letter_by_letter("You decide not to interact with the chest.")
             
+elif "leave" in another or "no" in another or "exit" in another:
+    quit()
+
 else:
-    print_letter_by_letter("\nYou opt for the right path, a sense of curiosity guiding your steps...")
-    time.sleep(1)
+    print_letter_by_letter("INVALID OPTION")
