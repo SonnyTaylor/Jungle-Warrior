@@ -435,7 +435,6 @@ def room2():
             start_game()
 
 def room3():
-
     time.sleep(1)
     clear_terminal()
     print_letter_by_letter("You breathe a sigh of relief after vanquishing the beast.")
@@ -450,15 +449,16 @@ def room3():
             print_letter_by_letter("The walls begin to rumble, and the ground beneath you shakes.")
             print_letter_by_letter("A secret passage opens before you, revealing a new path forward.")
             print_letter_by_letter("You step into the passage, ready to face whatever challenges await.")
+            # add gem ending
             
         else:
             print_letter_by_letter("You decide not to place the gem on the pedestal.")
             print_letter_by_letter("Curiosity piqued, you climb up to the trapdoor on the roof, wondering what lies above.")
-            print_letter_by_letter("You open the trapdoor and find yourself in a dimly lit attic space.")
-            print_letter_by_letter("The dusty attic seems to hold secrets of its own, and you begin to explore.")
+            print_letter_by_letter("You open the trapdoor and find yourself outside the temple.")
+            print_letter_by_letter("You leave the temple felling unsatisfied")
     
     else:
         print_letter_by_letter("Without the gem, you are left with only one option: the trapdoor on the roof.")
         print_letter_by_letter("Curiosity piqued, you climb up to the trapdoor and open it.")
-        print_letter_by_letter("You find yourself in a dark and narrow passageway that leads you deeper into the unknown.")
-        
+        print_letter_by_letter("You open the trapdoor and find yourself outside the temple.")
+        print_letter_by_letter("You leave the temple felling unsatisfied")
