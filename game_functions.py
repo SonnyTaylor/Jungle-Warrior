@@ -306,7 +306,7 @@ def print_letter_by_letter(text, delay=0.01):
 
     # Print a newline character at the end to move to the next line
     print()
-             
+
 def leave():
     print_letter_by_letter("You leave the temple never to return.")
     time.sleep(2)
@@ -475,7 +475,7 @@ def temple_chase_game():
             nonlocal user_input
             user_input = input()
 
-        input_thread = threading.Thread(target=input_thread)
+        input_thread = threading.Thread(target=input_thread) # type: ignore
         input_thread.start()
         input_thread.join(timeout)
 
