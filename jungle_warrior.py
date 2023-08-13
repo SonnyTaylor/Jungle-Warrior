@@ -5,7 +5,15 @@ import game_functions
 # Reset the inventory file
 game_functions.reset_inventory_file()
 
+correct_sensations = {
+    "sky": "You feel a gentle breeze and a sense of weightlessness.",
+    "earth": "The ground feels solid and reassuring beneath your feet.",
+    "water": "Coolness and fluidity embrace your step, like a soothing embrace.",
+    "fire": "A warm and invigorating energy courses through your body as you step onto the fiery tile."
+}
 
+
+incorrect_sound = "The ground beneath your foot feels unsettling."
 
 game_over = False
 text = """
