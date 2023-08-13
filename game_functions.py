@@ -4,6 +4,8 @@ import time
 from PIL import Image
 import os
 
+giant_scorpion = Fore.RED + "Giant Scorpion" + Style.RESET_ALL
+
 correct_sensations = {
     "sky": "You feel a gentle breeze and a sense of weightlessness.",
     "earth": "The ground feels solid and reassuring beneath your feet.",
@@ -11,6 +13,27 @@ correct_sensations = {
     "fire": "A warm and invigorating energy courses through your body as you step onto the fiery tile."
 }
 
+
+def main():
+    print_letter_by_letter("Welcome to an ancient adventure.")
+    user_name = input("What is your name? ")
+    username_color = Fore.GREEN + user_name + Style.RESET_ALL
+    clear_terminal()
+
+    print_letter_by_letter(f"Hello, {username_color}! Welcome to an ancient adventure.")
+    time.sleep(2)
+
+    print_letter_by_letter("\nYou stand before the entrance of a mysterious temple.")
+    time.sleep(1)
+    print_letter_by_letter("The Door lies ahead")
+    door_choice = validate_input("What do you do?\n1. Go through the door\n2. Leave\n", ["1", "2"])
+
+    if door_choice == "1":
+        room1(username_color)
+    elif door_choice == "2":
+        print_letter_by_letter("You leave the temple never to return.")
+        time.sleep(2)
+        quit()
 
 incorrect_sound = "The ground beneath your foot feels unsettling."
 
@@ -160,7 +183,7 @@ def play_round(computer, human):
             human.wins += 1
             game_in_progress = False
 
-def start_game():
+def start_game(username_color):
 
     computer = Player(giant_scorpion)
 
@@ -289,28 +312,7 @@ def leave():
     time.sleep(2)
     quit()
 
-def main():
-    print_letter_by_letter("Welcome to an ancient adventure.")
-    user_name = input("What is your name? ")
-    username_color = Fore.GREEN + user_name + Style.RESET_ALL
-    clear_terminal()
-
-    print_letter_by_letter(f"Hello, {username_color}! Welcome to an ancient adventure.")
-    time.sleep(2)
-
-    print_letter_by_letter("\nYou stand before the entrance of a mysterious temple.")
-    time.sleep(1)
-    print_letter_by_letter("The Door lies ahead")
-    door_choice = validate_input("What do you do?\n1. Go through the door\n2. Leave\n", ["1", "2"])
-
-    if door_choice == "1":
-        room1()
-    elif door_choice == "2":
-        print_letter_by_letter("You leave the temple never to return.")
-        time.sleep(2)
-        quit()
-
-def room1():
+def room1(username_color):
     print_letter_by_letter("You decide to go through the door, your heart pounding with anticipation...")
     time.sleep(0.5)
     clear_terminal()
@@ -323,7 +325,7 @@ def room1():
         print_letter_by_letter("4. Leave")
         room1_choice = int(input())
         if room1_choice == 1:
-            if check_item_in_inventory("Mysterious key")
+            if check_item_in_inventory("Mysterious key"):
                 print("You have already got the key.")
             else:
                 print_letter_by_letter("You walk up to the table and brush off the dust.")
@@ -345,25 +347,23 @@ def room1():
                 if take_gem == "yes":
                     add_item_to_inventory("Gem")
                     print_letter_by_letter("You take the gem and put it in your inventory.")
-                    clear_terminal()
         if room1_choice == 4:
             print_letter_by_letter("You leave for some reason")
             quit()
 
         if room1_choice == 3:
-            room2()
+            room2(username_color)
 
-def room2():
+def room2(username_color):
             print_letter_by_letter("You go through the door and find yourself in a long corridor with a mosaic on the floor and a poem on the wall that reads:")
-            print_letter_by_letter(Fore.RED + "Dawn breaks with stirring air,")
-            print_letter_by_letter(Fore.RED + "As sun shines down on new day fair")
-            print_letter_by_letter(Fore.RED + "Midday blaze bakes earth and grass,")
+            print_letter_by_letter(Fore.RED + "Dawn breaks with stirring " + Fore.RESET + "air,")
+            print_letter_by_letter(Fore.RED + "As sun shines down on new day fair" + Fore.RESET)
+            print_letter_by_letter(Fore.RED + "Midday blaze bakes " + Fore.GREEN + "earth" + Fore.RED + " and grass," + Fore.RESET)
             print_letter_by_letter(Fore.RED + "The farmer waits for heat to pass")
-            print_letter_by_letter(Fore.RED + "Evening cool brings water, wine,")
+            print_letter_by_letter(Fore.RED + "Evening cool brings " + Fore.BLUE + "water, " + Fore.RED + "wine")
             print_letter_by_letter(Fore.RED + "Drink and laughter passing time")
-            print_letter_by_letter(Fore.RED + "Night sees shining, roaring fire,")
-            print_letter_by_letter(Fore.RED + "as wood and coals burn on the pyre")
-            print_letter_by_letter(Fore.RESET)
+            print_letter_by_letter(Fore.RED + "Night sees shining, roaring " + Fore.YELLOW + "fire," + Fore.RESET)
+            print_letter_by_letter(Fore.RED + "as wood and coals burn on the pyre" + Fore.RESET)
             
             mosaic_image = Image.open("mosaic_image.png")  # Replace with the actual image file path
             mosaic_image.show()
@@ -432,7 +432,7 @@ def room2():
             print_letter_by_letter("It's a fight for survival!")
             time.sleep(3)
             clear_terminal()
-            start_game()
+            start_game(username_color)
 
 def room3():
     time.sleep(1)
@@ -449,16 +449,56 @@ def room3():
             print_letter_by_letter("The walls begin to rumble, and the ground beneath you shakes.")
             print_letter_by_letter("A secret passage opens before you, revealing a new path forward.")
             print_letter_by_letter("You step into the passage, ready to face whatever challenges await.")
-            # add gem ending
+            
+            # Add the gem ending here
             
         else:
             print_letter_by_letter("You decide not to place the gem on the pedestal.")
             print_letter_by_letter("Curiosity piqued, you climb up to the trapdoor on the roof, wondering what lies above.")
             print_letter_by_letter("You open the trapdoor and find yourself outside the temple.")
-            print_letter_by_letter("You leave the temple felling unsatisfied")
+            print_letter_by_letter("You leave the temple feeling unsatisfied")
+            # Add the trapdoor ending here
     
     else:
         print_letter_by_letter("Without the gem, you are left with only one option: the trapdoor on the roof.")
         print_letter_by_letter("Curiosity piqued, you climb up to the trapdoor and open it.")
         print_letter_by_letter("You open the trapdoor and find yourself outside the temple.")
-        print_letter_by_letter("You leave the temple felling unsatisfied")
+        print_letter_by_letter("You leave the temple feeling unsatisfied")
+        # Add the trapdoor ending here
+        
+        # Add the exciting cave chase sequence
+        print_letter_by_letter("As you step out of the temple, you notice a narrow opening leading to a dark cave.")
+        print_letter_by_letter("You enter the cave and suddenly hear growls echoing through the tunnel.")
+        print_letter_by_letter("A monstrous beast emerges from the shadows, its eyes fixed on you.")
+        
+        time.sleep(1)
+        print_letter_by_letter("You see two paths ahead:")
+        print_letter_by_letter("1. A gap that you can try to jump over.")
+        print_letter_by_letter("2. A straight path with no obstacles.")
+        
+        choice = input("Quickly! Type 'jump' or 'run' based on the description: ").lower()
+        
+        start_time = time.time()
+        response_time = 2  # Time limit in seconds
+        
+        if choice == "jump":
+            if time.time() - start_time <= response_time:
+                print_letter_by_letter("You muster all your strength and leap over the gap just in time.")
+                print_letter_by_letter("The beast roars in frustration as you narrowly escape.")
+                print_letter_by_letter("With your heart pounding, you emerge from the cave, triumphant.")
+                print_letter_by_letter("Congratulations! You have successfully completed the game with the gem ending.")
+            else:
+                print_letter_by_letter("Your hesitation is fatal. The beast lunges and darkness consumes you.")
+                print_letter_by_letter("Game over. Your journey ends here.")
+        elif choice == "run":
+            if time.time() - start_time <= response_time:
+                print_letter_by_letter("You sprint through the straight path, heart pounding.")
+                print_letter_by_letter("Miraculously, you outpace the beast and emerge from the cave.")
+                print_letter_by_letter("You collapse to the ground, catching your breath and realizing you've survived.")
+                print_letter_by_letter("Congratulations! You have successfully completed the game with the cave chase ending.")
+            else:
+                print_letter_by_letter("Your hesitation is fatal. The beast lunges and darkness consumes you.")
+                print_letter_by_letter("Game over. Your journey ends here.")
+        else:
+            print_letter_by_letter("Your confusion is fatal. The beast lunges and darkness consumes you.")
+            print_letter_by_letter("Game over. Your journey ends here.")
