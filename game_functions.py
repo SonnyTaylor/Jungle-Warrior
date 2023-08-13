@@ -3,8 +3,10 @@ from colorama import Fore, Style
 import time
 from PIL import Image
 import os
+import threading
 
 giant_scorpion = Fore.RED + "Giant Scorpion" + Style.RESET_ALL
+
 
 correct_sensations = {
     "sky": "You feel a gentle breeze and a sense of weightlessness.",
@@ -451,7 +453,7 @@ def room3():
             print_letter_by_letter("The walls begin to rumble, and the ground beneath you shakes.")
             print_letter_by_letter("A secret passage opens before you, revealing a new path forward.")
             print_letter_by_letter("You step into the passage, ready to face whatever challenges await.")
-            
+            temple_chase_game()
             # Add the gem ending here
             
         else:
@@ -468,3 +470,45 @@ def room3():
         print_letter_by_letter("You leave the temple feeling unsatisfied")
         # Add the trapdoor ending here
         
+def temple_chase_game():
+    print("A Temple Guardian is chasing you!")
+    print("Type 'jump' or 'run' to escape. Press Enter after each word.")
+
+    word_list = ["jump", "run"]
+    success_count = 0
+
+    for _ in range(10):
+        word = random.choice(word_list)
+        print("\nType: ", word)
+
+        user_input = ""
+        timeout = 5  # Set the time limit (in seconds) for typing the word
+
+        def input_thread():
+            nonlocal user_input
+            user_input = input()
+
+        input_thread = threading.Thread(target=input_thread)
+        input_thread.start()
+        input_thread.join(timeout)
+
+        if input_thread.is_alive():
+            print("\nTime's up! The Temple Guardian caught you.")
+            return False
+
+        if user_input == word:
+            if word == "jump":
+                print("\nYou jumped over the gap!")
+            elif word == "run":
+                print("\nYou keep running from it.")
+            success_count += 1
+        else:
+            print("\nIncorrect! The Temple Guardian caught you.")
+            return False
+
+    if success_count == 10:
+        print("\nCongratulations! You successfully escaped the Temple Guardian!")
+        return True
+
+    print("Game over.")
+    return False
