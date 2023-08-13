@@ -303,6 +303,7 @@ def main():
 def room1():
     print_letter_by_letter("You decide to go through the door, your heart pounding with anticipation...")
     time.sleep(0.5)
+    clear_terminal()
     print_letter_by_letter("\nAfter walking down the path for a while, you come across a small room with a table, a chest, and another door.")
     while True: 
         print_letter_by_letter("What do you do next?")
@@ -312,16 +313,19 @@ def room1():
         print_letter_by_letter("4. Leave")
         room1_choice = int(input())
         if room1_choice == 1:
-            print_letter_by_letter("You walk up to the table and brush off the dust.")
-            print_letter_by_letter("You notice a mysterious key.")
-            take_key = input("Do you take the key? ").lower()
+            if check_item_in_inventory("Mysterious key")
+                print("You have already got the key.")
+            else:
+                print_letter_by_letter("You walk up to the table and brush off the dust.")
+                print_letter_by_letter("You notice a mysterious key.")
+                take_key = input("Do you take the key (yes/no)? ").lower()
             
-            if "yes" in take_key:
-                add_item_to_inventory("Mysterious key")
-                print_letter_by_letter("You take the key and put it in your inventory.")
+                if "yes" in take_key:
+                    add_item_to_inventory("Mysterious key")
+                    print_letter_by_letter("You take the key and put it in your inventory.")
             
-            elif "no" in take_key:
-                print_letter_by_letter("You leave the key on the table.")
+                elif "no" in take_key:
+                    print_letter_by_letter("You leave the key on the table.")
 
         if room1_choice == 2:
             if check_item_in_inventory("Mysterious key"):
@@ -436,19 +440,15 @@ def room3():
             print_letter_by_letter("The walls begin to rumble, and the ground beneath you shakes.")
             print_letter_by_letter("A secret passage opens before you, revealing a new path forward.")
             print_letter_by_letter("You step into the passage, ready to face whatever challenges await.")
-            gem_ending()
+            
         else:
             print_letter_by_letter("You decide not to place the gem on the pedestal.")
             print_letter_by_letter("Curiosity piqued, you climb up to the trapdoor on the roof, wondering what lies above.")
             print_letter_by_letter("You open the trapdoor and find yourself in a dimly lit attic space.")
             print_letter_by_letter("The dusty attic seems to hold secrets of its own, and you begin to explore.")
-            trapdoor_ending()
+    
     else:
         print_letter_by_letter("Without the gem, you are left with only one option: the trapdoor on the roof.")
         print_letter_by_letter("Curiosity piqued, you climb up to the trapdoor and open it.")
         print_letter_by_letter("You find yourself in a dark and narrow passageway that leads you deeper into the unknown.")
-        trapdoor_ending()
-
-def gem_ending():
-
-def trapdoor_ending():
+        
