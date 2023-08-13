@@ -503,4 +503,6 @@ def temple_chase_game():
 
 def gem_ending():
     print_letter_by_letter("After successfully escaping from the Temple Guardian you make your way to the end of the cave")
-    
+
+def leroy_ending():
+    print ('you smell')
