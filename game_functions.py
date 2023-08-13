@@ -289,6 +289,7 @@ def display_inventory():
         print("Your inventory is empty.")
 
 
+
 def print_letter_by_letter(text, delay=0.01):
     """
     Print text letter by letter with a specified delay between each letter.
@@ -300,13 +301,12 @@ def print_letter_by_letter(text, delay=0.01):
     for char in text:
         # Print the current character without moving to the next line
         print(char, end='', flush=True)
-
         # Introduce a delay before printing the next character
         time.sleep(delay)
 
     # Print a newline character at the end to move to the next line
     print()
-
+             
 def leave():
     print_letter_by_letter("You leave the temple never to return.")
     time.sleep(2)
@@ -399,32 +399,21 @@ def room2(username_color):
                 quit()
 
             print_letter_by_letter("Congratulations! You successfully step on each tile in the correct order. A hidden door opens, revealing a new path ahead.")
-            pattern = [
-                        "/|  |\\            /|  |\\",
-                        "/|  |\\            /|  |\\",
-                        "/ |  | \\          / |  | \\",
-                        "| |  | |          | |  | |",
-                        "\\  \\/  /  __  __  \\  \\/  /",
-                        " \\    /  / /  \\ \\  \\    /",
-                        "  \\  /   \\ \\__/ /   \\  /",
-                        "  \\  /   /      \\   \\  /",
-                        " _ \\ \\__/ O    O \\__/ / _",
-                        " \\\\ \\___          ___/ //",
-                        "_  \\\\___/  ______  \\___//  _",
-                        "\\\\  ----(          )----  //",
-                        " \\\\_____( ________ )_____//",
-                        "  ~-----(          )-----~ _",
-                        "   _____( ________ )_____  \\\\",
-                        "  /,----(          )----  _//",
-                        " //     (  ______  )     /  \\",
-                        " ~       \\        /      \\  /",
-                        "          \\  __  /       / /",
-                        "           \\    /       / /",
-                        "            \\   \\      / /",
-                        "             \\   ~----~ /",
-                        "              \\________/"
-                    ]
 
+            pattern = [
+                "       ___ __",
+                "     _{___{__}\\",
+                "    {_}      `\\)",
+                "   {_}        `            _.-''''--.._",
+                "   {_}                    //'.--.  \\___`.",
+                "    { }__,_.--~~~-~~~-~~-::.---. `-\\.  `.)",
+                "     `-:.{_{_{_{_{_{_{_{_//  -- 8;=- `",
+                "        `-:,_.:,_:,_:,.`\\\\._ ..'=- ,",
+                "            // // // //`-.`\\`   .-'/",
+                "           << << << <<    \\ `--'  /----)",
+                "            ^  ^  ^  ^     `-.....--'''"
+            ]
+            
             color = Fore.YELLOW  # Brown color from Colorama
             for line in pattern:
                 print(color + line)
