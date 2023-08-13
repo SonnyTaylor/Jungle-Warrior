@@ -195,9 +195,6 @@ def start_game(username_color):
     keep_playing = True
 
     while (keep_playing is True):
-        print("Current Score:")
-        print(f"{username_color} - {0}".format(human.wins))
-        print(f"{giant_scorpion} - {0}".format(computer.wins))
 
         computer.health = 100
         human.health = 100
@@ -205,6 +202,7 @@ def start_game(username_color):
         print()
         if (computer.health == 0):
             room3()  # Call the function to continue the game
+            keep_playing = False
 
 
 # Function to add an item to the inventory file
