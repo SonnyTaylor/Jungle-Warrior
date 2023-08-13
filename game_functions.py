@@ -494,8 +494,13 @@ def temple_chase_game():
             return False
 
     if success_count == 10:
-        print("\nCongratulations! You successfully escaped the Temple Guardian!")
+        print_letter_by_letter("\nCongratulations! You successfully escaped the Temple Guardian!")
         return True
 
     print("Game over.")
+    exit()
     return False
+
+def gem_ending():
+    print_letter_by_letter("After successfully escaping from the Temple Guardian you make your way to the end of the cave")
+    
