@@ -6,6 +6,13 @@ import os
 
 giant_scorpion = Fore.RED + "Giant Scorpion" + Fore.RESET # Create a color-formatted string
 
+def validate_input(prompt, valid_choices):
+    while True:
+        choice = input(prompt).strip()
+        if choice in valid_choices:
+            return choice
+        print("Invalid input. Please try again.")
+
 def clear_terminal():
     """
     Clears the terminal screen.
@@ -274,6 +281,26 @@ def leave():
     time.sleep(2)
     quit()
 
+def main():
+    print_letter_by_letter("Welcome to an ancient adventure.")
+    user_name = input("What is your name? ")
+    username_color = Fore.GREEN + user_name + Style.RESET_ALL
+    clear_terminal()
+
+    print_letter_by_letter(f"Hello, {username_color}! Welcome to an ancient adventure.")
+    time.sleep(2)
+
+    print_letter_by_letter("\nYou stand before the entrance of a mysterious temple.")
+    time.sleep(1)
+    print_letter_by_letter("The Door lies ahead")
+    door_choice = validate_input("What do you do?\n1. Go through the door\n2. Leave\n", ["1", "2"])
+
+    if door_choice == "1":
+        room1()
+    elif door_choice == "2":
+        print_letter_by_letter("You leave the temple never to return.")
+        time.sleep(2)
+        quit()
 
 def room1():
     print_letter_by_letter("You decide to go through the door, your heart pounding with anticipation...")
@@ -305,11 +332,12 @@ def room1():
                 take_gem = input("Do you take the gem (yes/no)? ").lower()
                 if take_gem == "yes":
                     add_item_to_inventory("Gem")
-                if take_gem == "no":
+                    print_letter_by_letter("You take the gem and put it in your inventory.")
+                    clear_terminal()
         if room1_choice == 4:
             print_letter_by_letter("You leave for some reason")
             quit()
-            
+
         if room1_choice == 3:
             room2()
 
@@ -422,7 +450,6 @@ def room3():
         print_letter_by_letter("You find yourself in a dark and narrow passageway that leads you deeper into the unknown.")
 
 
-
 # Reset the inventory file
 reset_inventory_file()
 
@@ -458,28 +485,5 @@ for line in lines:
         print(Fore.GREEN + line + Style.RESET_ALL)
 
 
-# Get user's name
-user_name = input("What is your name? ")
-if user_name == "Sonny" or "Cooper" or "Leroy":
-    print("yo whats good my g, from sonny")
-clear_terminal()
-    
-username_color = Fore.GREEN + user_name + Style.RESET_ALL
-
-# Greet the user
-print_letter_by_letter(f"Hello, {username_color}! Welcome to an ancient adventure.")
-time.sleep(2)
-
-# Set the stage
-print_letter_by_letter("\nYou stand before the entrance of a mysterious temple.")
-time.sleep(1)
-print_letter_by_letter("The Door lies ahead")
-print_letter_by_letter("What do you do? ")
-print_letter_by_letter("1. Go through the door")
-print_letter_by_letter("2. Leave")
-door_choice = int(input())
-
-if door_choice == 1:
-    room1()
-elif door_choice == 2:
-    leave()
+if __name__ == "__main__":
+    main()

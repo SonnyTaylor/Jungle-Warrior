@@ -296,7 +296,6 @@ def print_letter_by_letter(text, delay=0.01):
     # Print a newline character at the end to move to the next line
     print()
 
-
 # Reset the inventory file
 reset_inventory_file()
 
