@@ -4,6 +4,16 @@ import time
 from PIL import Image
 import os
 
+correct_sensations = {
+    "sky": "You feel a gentle breeze and a sense of weightlessness.",
+    "earth": "The ground feels solid and reassuring beneath your feet.",
+    "water": "Coolness and fluidity embrace your step, like a soothing embrace.",
+    "fire": "A warm and invigorating energy courses through your body as you step onto the fiery tile."
+}
+
+
+incorrect_sound = "The ground beneath your foot feels unsettling."
+
 def validate_input(prompt, valid_choices):
     while True:
         choice = input(prompt).strip()
