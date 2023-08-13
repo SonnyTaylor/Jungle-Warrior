@@ -368,6 +368,8 @@ def room2(username_color):
             mosaic_image = Image.open("mosaic_image.png")  # Replace with the actual image file path
             mosaic_image.show()
             
+            print_letter_by_letter("You notice an arrow lodged in the wall and a pool of blood below it")
+            print_letter_by_letter("This is a trap")
             step1 = input("Where do you step on the first tile? ")
             if step1.lower() == "sky" or step1.lower() == "air" or step1.lower() == "blue" or step1.lower() == "clouds" or step1.lower() == "heavens":
                 print_letter_by_letter(correct_sensations["sky"])
@@ -397,7 +399,6 @@ def room2(username_color):
                 quit()
 
             print_letter_by_letter("Congratulations! You successfully step on each tile in the correct order. A hidden door opens, revealing a new path ahead.")
-            print_letter_by_letter("As you move forward, you enter a dimly lit chamber. A gargantuan scorpion lurks in the shadows, its stinger poised for attack.")
             pattern = [
                         "/|  |\\            /|  |\\",
                         "/|  |\\            /|  |\\",
@@ -429,6 +430,7 @@ def room2(username_color):
                 print(color + line)
 
             print(Style.RESET_ALL)  # Reset the color
+            print_letter_by_letter("As you move forward, you enter a dimly lit chamber. A gargantuan scorpion lurks in the shadows, its stinger poised for attack.")
             print_letter_by_letter("It's a fight for survival!")
             time.sleep(3)
             clear_terminal()
@@ -466,39 +468,3 @@ def room3():
         print_letter_by_letter("You leave the temple feeling unsatisfied")
         # Add the trapdoor ending here
         
-        # Add the exciting cave chase sequence
-        print_letter_by_letter("As you step out of the temple, you notice a narrow opening leading to a dark cave.")
-        print_letter_by_letter("You enter the cave and suddenly hear growls echoing through the tunnel.")
-        print_letter_by_letter("A monstrous beast emerges from the shadows, its eyes fixed on you.")
-        
-        time.sleep(1)
-        print_letter_by_letter("You see two paths ahead:")
-        print_letter_by_letter("1. A gap that you can try to jump over.")
-        print_letter_by_letter("2. A straight path with no obstacles.")
-        
-        choice = input("Quickly! Type 'jump' or 'run' based on the description: ").lower()
-        
-        start_time = time.time()
-        response_time = 2  # Time limit in seconds
-        
-        if choice == "jump":
-            if time.time() - start_time <= response_time:
-                print_letter_by_letter("You muster all your strength and leap over the gap just in time.")
-                print_letter_by_letter("The beast roars in frustration as you narrowly escape.")
-                print_letter_by_letter("With your heart pounding, you emerge from the cave, triumphant.")
-                print_letter_by_letter("Congratulations! You have successfully completed the game with the gem ending.")
-            else:
-                print_letter_by_letter("Your hesitation is fatal. The beast lunges and darkness consumes you.")
-                print_letter_by_letter("Game over. Your journey ends here.")
-        elif choice == "run":
-            if time.time() - start_time <= response_time:
-                print_letter_by_letter("You sprint through the straight path, heart pounding.")
-                print_letter_by_letter("Miraculously, you outpace the beast and emerge from the cave.")
-                print_letter_by_letter("You collapse to the ground, catching your breath and realizing you've survived.")
-                print_letter_by_letter("Congratulations! You have successfully completed the game with the cave chase ending.")
-            else:
-                print_letter_by_letter("Your hesitation is fatal. The beast lunges and darkness consumes you.")
-                print_letter_by_letter("Game over. Your journey ends here.")
-        else:
-            print_letter_by_letter("Your confusion is fatal. The beast lunges and darkness consumes you.")
-            print_letter_by_letter("Game over. Your journey ends here.")
