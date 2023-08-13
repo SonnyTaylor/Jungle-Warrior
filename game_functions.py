@@ -506,3 +506,9 @@ def gem_ending():
 
 def leroy_ending():
     print ('you smell')
+
+
+
+
+def sonny_ending():
+    print("hi sonny")
