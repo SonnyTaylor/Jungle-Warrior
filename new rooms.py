@@ -284,6 +284,7 @@ def room1():
         print_letter_by_letter("1. Check the table")
         print_letter_by_letter("2. Check the chest")
         print_letter_by_letter("3. Go through the door")
+        print_letter_by_letter("4. Leave")
         room1_choice = int(input())
         if room1_choice == 1:
             print_letter_by_letter("You walk up to the table and brush off the dust.")
@@ -301,9 +302,14 @@ def room1():
             if check_item_in_inventory("Mysterious key"):
                 print_letter_by_letter("You use the key to open the chest.")
                 print_letter_by_letter("You find a large ominous gem.")
-                add_item_to_inventory("Gem")
-            else:
-                print_letter_by_letter("You look at the chest and notice there is a lock on it.")
+                take_gem = input("Do you take the gem (yes/no)? ").lower()
+                if take_gem == "yes":
+                    add_item_to_inventory("Gem")
+                if take_gem == "no":
+        if room1_choice == 4:
+            print_letter_by_letter("You leave for some reason")
+            quit()
+            
         if room1_choice == 3:
             room2()
 
