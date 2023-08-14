@@ -469,7 +469,7 @@ def temple_chase_game():
         print("\nType: ", word)
 
         user_input = ""
-        timeout = 5  # Set the time limit (in seconds) for typing the word
+        timeout = 2 # Set the time limit (in seconds) for typing the word
 
         def input_thread():
             nonlocal user_input
@@ -503,3 +503,4 @@ def temple_chase_game():
 
 def gem_ending():
     print_letter_by_letter("After successfully escaping from the Temple Guardian you make your way to the end of the cave")
+    print_letter_by_letter("")
