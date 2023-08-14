@@ -322,7 +322,8 @@ def room1(username_color):
         print_letter_by_letter("1. Check the table")
         print_letter_by_letter("2. Check the chest")
         print_letter_by_letter("3. Go through the door")
-        print_letter_by_letter("4. Leave")
+        print_letter_by_letter("4. Check inventory")
+        print_letter_by_letter("5. Leave")
         room1_choice = int(input())
         if room1_choice == 1:
             if check_item_in_inventory("Mysterious key"):
@@ -347,12 +348,15 @@ def room1(username_color):
                 if take_gem == "yes":
                     add_item_to_inventory("Gem")
                     print_letter_by_letter("You take the gem and put it in your inventory.")
-        if room1_choice == 4:
+        if room1_choice == 5:
             print_letter_by_letter("You leave for some reason")
             quit()
 
         if room1_choice == 3:
             room2(username_color)
+            
+        if room1_choice == 4:
+            display_inventory()
 
 def room2(username_color):
             print_letter_by_letter("You go through the door and find yourself in a long corridor with a mosaic on the floor and a poem on the wall that reads:")
