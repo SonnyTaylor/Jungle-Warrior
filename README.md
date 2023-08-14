@@ -18,3 +18,5 @@ A simple CLI text adventure game, created for a school project. it probably coul
 ### Game Modules
 
 - The game mainly uses two modules: Pillow (to show an image for a puzzle) and colorama (an amazing ANSI sequence text colorizer).
+
+[![Sonnys's GitHub stats](https://github-readme-stats.vercel.app/api?username=salaminipples)](https://github.com/anuraghazra/github-readme-stats)
