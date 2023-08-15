@@ -1,2 +1,2 @@
 @echo off
-python jungle_warrior.py
+python main.py
