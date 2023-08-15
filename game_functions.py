@@ -352,18 +352,23 @@ def room1(username_color):
                 print_letter_by_letter("It looks like it needs a key")
                 print_letter_by_letter("it does look pretty fragile though")
                 chest_break = input("Do you try break the chest? (y/n): ")
-                if chest_break == "yes":
+                if chest_break == "y":
                     chest_chance = random.randint(0,9)
                     if chest_chance < 8:
                         print_letter_by_letter("You attempt to break the chest, but have no luck")
                     else:
+                        print_letter_by_letter('you manage to break the chest')
                         print_letter_by_letter("You find a large ominous gem.")
                         take_gem_break = input("Do you take the gem (yes/no)? ").lower()
                         if take_gem_break == "yes":
                             add_item_to_inventory("Gem")
                             print_letter_by_letter("You take the gem and put it in your inventory.")
-                            
-                        print_letter_by_letter("You manage to break the chest and get to its insides")
+                if chest_break == "n":
+                    print_letter_by_letter("You decide to leave it alone")
+                    
+                else:
+                    print_letter_by_letter("Invalid Answer")
+
         if room1_choice == 5:
             print_letter_by_letter("You leave for some reason")
             quit()
