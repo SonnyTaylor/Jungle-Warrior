@@ -279,7 +279,6 @@ def main():
     print_letter_by_letter("Welcome to an ancient adventure.")
     user_name = input("What is your name? ")
     username_color = Fore.GREEN + user_name + Style.RESET_ALL # Make username color
-    clear_terminal()
 
     print_letter_by_letter(f"Hello, {username_color}! Welcome to an ancient adventure.")
     time.sleep(2)
@@ -299,7 +298,6 @@ def main():
 def room1(username_color):
     print_letter_by_letter("You decide to go through the door, your heart pounding with anticipation...")
     time.sleep(0.5)
-    clear_terminal()
     print_letter_by_letter("\nAfter walking down the path for a while, you come across a small room with a table, a chest, and another door.")
     while True:
         print_letter_by_letter("What do you do next?")
@@ -358,7 +356,6 @@ def room1(username_color):
             quit()
 
         if room1_choice == 3:
-            return False
             room2(username_color)
 
         if room1_choice == 4:
@@ -432,12 +429,10 @@ def room2(username_color):
             print_letter_by_letter("As you move forward, you enter a dimly lit chamber. A gargantuan scorpion lurks in the shadows, its stinger poised for attack.")
             print_letter_by_letter("It's a fight for survival!")
             time.sleep(3)
-            clear_terminal()
             start_game(username_color)
 
 def room3():
     time.sleep(1)
-    clear_terminal()
     print_letter_by_letter("You breathe a sigh of relief after vanquishing the beast.")
     print_letter_by_letter("You walk past its limp body and make your way to the next room where you find a large pedestal and a trapdoor on the roof.")
 
