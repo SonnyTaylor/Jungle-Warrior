@@ -358,6 +358,7 @@ def room1(username_color):
             quit()
 
         if room1_choice == 3:
+            return False
             room2(username_color)
 
         if room1_choice == 4:
