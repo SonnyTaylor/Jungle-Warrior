@@ -5,38 +5,91 @@ from PIL import Image
 import os
 import threading
 
+# Scorpion name in color
 giant_scorpion = Fore.RED + "Giant Scorpion" + Style.RESET_ALL
 
-
+#Descriptions for puzzle
 correct_sensations = {
     "sky": "You feel a gentle breeze and a sense of weightlessness.",
     "earth": "The ground feels solid and reassuring beneath your feet.",
     "water": "Coolness and fluidity embrace your step, like a soothing embrace.",
     "fire": "A warm and invigorating energy courses through your body as you step onto the fiery tile."
 }
-
 incorrect_sound = "The ground beneath your foot feels unsettling."
 
-def main():
-    print_letter_by_letter("Welcome to an ancient adventure.")
-    user_name = input("What is your name? ")
-    username_color = Fore.GREEN + user_name + Style.RESET_ALL # Make username color
-    clear_terminal()
+def add_item_to_inventory(item):
+    """
+    Adds an item to the inventory file.
 
-    print_letter_by_letter(f"Hello, {username_color}! Welcome to an ancient adventure.")
-    time.sleep(2)
+    Args:
+        item (str): The item to be added to the inventory.
+    """
+    with open("inventory.txt", "a") as file:
+        file.write(item + "\n")
 
-    print_letter_by_letter("\nYou stand before the entrance of a mysterious temple.")
-    time.sleep(1)
-    print_letter_by_letter("The Door lies ahead")
-    door_choice = validate_input("What do you do?\n1. Go through the door\n2. Leave\n", ["1", "2"])
+def check_item_in_inventory(item):
+    """
+    Checks if a given item exists in the inventory.
 
-    if door_choice == "1":
-        room1(username_color)
-    elif door_choice == "2":
-        print_letter_by_letter("You leave the temple never to return.")
-        time.sleep(2)
-        quit()
+    Args:
+        item (str): The item to check.
+
+    Returns:
+        bool: True if the item is in the inventory, False otherwise.
+    """
+    try:
+        with open("inventory.txt", "r") as file:
+            inventory = file.read().splitlines()
+            return item in inventory
+    except FileNotFoundError:
+        return False
+
+def remove_item_from_inventory(item):
+    """
+    Removes an item from the inventory.
+
+    Args:
+        item (str): The item to be removed.
+
+    Returns:
+        bool: True if the item was successfully removed, False if the item was not found or an error occurred.
+    """
+    try:
+        with open("inventory.txt", "r") as file:
+            inventory = file.read().splitlines()
+        if item in inventory:
+            inventory.remove(item)
+            with open("inventory.txt", "w") as file:
+                for i in inventory:
+                    file.write(i + "\n")
+            return True
+        else:
+            return False
+    except FileNotFoundError:
+        return False
+
+def reset_inventory_file():
+    """
+    Resets the inventory file by clearing its contents.
+    """
+    with open("inventory.txt", "w") as file:
+        pass  # This will clear the contents of the file
+
+def display_inventory():
+    """
+    Displays the items in the user's inventory.
+    """
+    try:
+        with open("inventory.txt", "r") as file:
+            inventory = file.read().splitlines()
+            if inventory:
+                print("Inventory:")
+                for item in inventory:
+                    print("- " + item)
+            else:
+                print("Your inventory is empty.")
+    except FileNotFoundError:
+        print("Your inventory is empty.")
 
 def validate_input(prompt, valid_choices):
     while True:
@@ -200,80 +253,6 @@ def start_game(username_color):
             room3()  # Call the function to continue the game
             keep_playing = False
 
-def add_item_to_inventory(item):
-    """
-    Adds an item to the inventory file.
-
-    Args:
-        item (str): The item to be added to the inventory.
-    """
-    with open("inventory.txt", "a") as file:
-        file.write(item + "\n")
-
-def check_item_in_inventory(item):
-    """
-    Checks if a given item exists in the inventory.
-
-    Args:
-        item (str): The item to check.
-
-    Returns:
-        bool: True if the item is in the inventory, False otherwise.
-    """
-    try:
-        with open("inventory.txt", "r") as file:
-            inventory = file.read().splitlines()
-            return item in inventory
-    except FileNotFoundError:
-        return False
-
-def remove_item_from_inventory(item):
-    """
-    Removes an item from the inventory.
-
-    Args:
-        item (str): The item to be removed.
-
-    Returns:
-        bool: True if the item was successfully removed, False if the item was not found or an error occurred.
-    """
-    try:
-        with open("inventory.txt", "r") as file:
-            inventory = file.read().splitlines()
-        if item in inventory:
-            inventory.remove(item)
-            with open("inventory.txt", "w") as file:
-                for i in inventory:
-                    file.write(i + "\n")
-            return True
-        else:
-            return False
-    except FileNotFoundError:
-        return False
-
-def reset_inventory_file():
-    """
-    Resets the inventory file by clearing its contents.
-    """
-    with open("inventory.txt", "w") as file:
-        pass  # This will clear the contents of the file
-
-def display_inventory():
-    """
-    Displays the items in the user's inventory.
-    """
-    try:
-        with open("inventory.txt", "r") as file:
-            inventory = file.read().splitlines()
-            if inventory:
-                print("Inventory:")
-                for item in inventory:
-                    print("- " + item)
-            else:
-                print("Your inventory is empty.")
-    except FileNotFoundError:
-        print("Your inventory is empty.")
-
 def print_letter_by_letter(text, delay=0.01):
     """
     Print text letter by letter with a specified delay between each letter.
@@ -295,6 +274,27 @@ def leave():
     print_letter_by_letter("You leave the temple never to return.")
     time.sleep(2)
     quit()
+
+def main():
+    print_letter_by_letter("Welcome to an ancient adventure.")
+    user_name = input("What is your name? ")
+    username_color = Fore.GREEN + user_name + Style.RESET_ALL # Make username color
+    clear_terminal()
+
+    print_letter_by_letter(f"Hello, {username_color}! Welcome to an ancient adventure.")
+    time.sleep(2)
+
+    print_letter_by_letter("\nYou stand before the entrance of a mysterious temple.")
+    time.sleep(1)
+    print_letter_by_letter("The Door lies ahead")
+    door_choice = validate_input("What do you do?\n1. Go through the door\n2. Leave\n", ["1", "2"])
+
+    if door_choice == "1":
+        room1(username_color)
+    elif door_choice == "2":
+        print_letter_by_letter("You leave the temple never to return.")
+        time.sleep(2)
+        quit()
 
 def room1(username_color):
     print_letter_by_letter("You decide to go through the door, your heart pounding with anticipation...")
