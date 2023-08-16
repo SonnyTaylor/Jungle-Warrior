@@ -337,7 +337,7 @@ def room1(username_color):
                 print_letter_by_letter("it does look pretty fragile though")
                 chest_break = input("Do you try break the chest? (y/n): ")
                 if chest_break == "y":
-                    chest_chance = random.randint(0,9)
+                    chest_chance = random.randint(0,10)
                     if chest_chance < 8:
                         print_letter_by_letter("You attempt to break the chest, but have no luck")
                     else:
