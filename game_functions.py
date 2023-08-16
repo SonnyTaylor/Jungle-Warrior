@@ -15,11 +15,12 @@ correct_sensations = {
     "fire": "A warm and invigorating energy courses through your body as you step onto the fiery tile."
 }
 
+incorrect_sound = "The ground beneath your foot feels unsettling."
 
 def main():
     print_letter_by_letter("Welcome to an ancient adventure.")
     user_name = input("What is your name? ")
-    username_color = Fore.GREEN + user_name + Style.RESET_ALL
+    username_color = Fore.GREEN + user_name + Style.RESET_ALL # Make username color
     clear_terminal()
 
     print_letter_by_letter(f"Hello, {username_color}! Welcome to an ancient adventure.")
@@ -36,8 +37,6 @@ def main():
         print_letter_by_letter("You leave the temple never to return.")
         time.sleep(2)
         quit()
-
-incorrect_sound = "The ground beneath your foot feels unsettling."
 
 def validate_input(prompt, valid_choices):
     while True:
@@ -60,7 +59,7 @@ def clear_terminal():
         clear_terminal()  # Clears the terminal screen.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
-    
+
 class Player():
     def __init__(self, name):
         self.health = 100
@@ -92,14 +91,12 @@ class Player():
             print("{0} heals for {1}!"
                 .format(self.name.capitalize(), heal_amount))
 
-
 def parse_int(input):
     try:
         int(input)
         return True
     except ValueError:
         return False
-
 
 def get_selection():
     valid_input = False
@@ -110,7 +107,6 @@ def get_selection():
             return int(choice)
         else:
             print("The input was invalid. Please try again.")
-
 
 def get_computer_selection(health):
     sleep_time = random.randrange(2, 5)
@@ -204,8 +200,6 @@ def start_game(username_color):
             room3()  # Call the function to continue the game
             keep_playing = False
 
-
-# Function to add an item to the inventory file
 def add_item_to_inventory(item):
     """
     Adds an item to the inventory file.
@@ -216,8 +210,6 @@ def add_item_to_inventory(item):
     with open("inventory.txt", "a") as file:
         file.write(item + "\n")
 
-
-# Function to check if an item is in the inventory
 def check_item_in_inventory(item):
     """
     Checks if a given item exists in the inventory.
@@ -235,8 +227,6 @@ def check_item_in_inventory(item):
     except FileNotFoundError:
         return False
 
-
-# Function to remove an item from the inventory
 def remove_item_from_inventory(item):
     """
     Removes an item from the inventory.
@@ -261,8 +251,6 @@ def remove_item_from_inventory(item):
     except FileNotFoundError:
         return False
 
-
-# Function to reset the inventory file
 def reset_inventory_file():
     """
     Resets the inventory file by clearing its contents.
@@ -270,8 +258,6 @@ def reset_inventory_file():
     with open("inventory.txt", "w") as file:
         pass  # This will clear the contents of the file
 
-
-# Function to display the user's inventory
 def display_inventory():
     """
     Displays the items in the user's inventory.
@@ -287,8 +273,6 @@ def display_inventory():
                 print("Your inventory is empty.")
     except FileNotFoundError:
         print("Your inventory is empty.")
-
-
 
 def print_letter_by_letter(text, delay=0.01):
     """
@@ -317,7 +301,7 @@ def room1(username_color):
     time.sleep(0.5)
     clear_terminal()
     print_letter_by_letter("\nAfter walking down the path for a while, you come across a small room with a table, a chest, and another door.")
-    while True: 
+    while True:
         print_letter_by_letter("What do you do next?")
         print_letter_by_letter("1. Check the table")
         print_letter_by_letter("2. Check the chest")
@@ -332,11 +316,11 @@ def room1(username_color):
                 print_letter_by_letter("You walk up to the table and brush off the dust.")
                 print_letter_by_letter("You notice a mysterious key.")
                 take_key = input("Do you take the key (yes/no)? ").lower()
-            
+
                 if "yes" in take_key:
                     add_item_to_inventory("Mysterious key")
                     print_letter_by_letter("You take the key and put it in your inventory.")
-            
+
                 elif "no" in take_key:
                     print_letter_by_letter("You leave the key on the table.")
 
@@ -365,7 +349,7 @@ def room1(username_color):
                             print_letter_by_letter("You take the gem and put it in your inventory.")
                 if chest_break == "n":
                     print_letter_by_letter("You decide to leave it alone")
-                    
+
                 else:
                     print_letter_by_letter("Invalid Answer")
 
@@ -375,7 +359,7 @@ def room1(username_color):
 
         if room1_choice == 3:
             room2(username_color)
-            
+
         if room1_choice == 4:
             display_inventory()
 
@@ -389,10 +373,10 @@ def room2(username_color):
             print_letter_by_letter(Fore.RED + "Drink and laughter passing time")
             print_letter_by_letter(Fore.RED + "Night sees shining, roaring " + Fore.YELLOW + "fire," + Fore.RESET)
             print_letter_by_letter(Fore.RED + "as wood and coals burn on the pyre" + Fore.RESET)
-            
-            mosaic_image = Image.open("mosaic_image.png")  # Replace with the actual image file path
+
+            mosaic_image = Image.open("mosaic_image.png") # puzzle image to pop up
             mosaic_image.show()
-            
+
             print_letter_by_letter("You notice an arrow lodged in the wall and a pool of blood below it")
             print_letter_by_letter("This is a trap")
             step1 = input("Where do you step on the first tile? ")
@@ -401,21 +385,21 @@ def room2(username_color):
             else:
                 print_letter_by_letter("The ground gives way beneath your feet, and you fall into a pit. Your journey ends here.")
                 quit()
-            
+
             step2 = input("Where do you step on the second tile? ")
             if step2.lower() == "earth" or step2.lower() == "hill" or step2.lower() == "grass" or step2.lower() == "green" or step2.lower() == "nature":
                 print_letter_by_letter(correct_sensations["earth"])
             else:
                 print_letter_by_letter("Arrows shoot out from the walls as you step on the wrong tile. Your adventure comes to an abrupt end.")
                 quit()
-            
+
             step3 = input("Where do you step on the third tile? ")
             if step3.lower() == "water" or step3.lower() == "river" or step3.lower() == "stream" or step3.lower() == "flow":
                 print_letter_by_letter(correct_sensations["water"])
             else:
                 print_letter_by_letter("The ground shakes and crumbles beneath your feet. You fall into darkness, and your journey ends here.")
                 quit()
-            
+
             step4 = input("Where do you step on the fourth tile? ")
             if step4.lower() == "fire" or step4.lower() == "flame" or step4.lower() == "blaze" or step4.lower() == "heat" or step4.lower() == "ignite":
                 print_letter_by_letter(correct_sensations["fire"])
@@ -438,7 +422,7 @@ def room2(username_color):
                 "           << << << <<    \\ `--'  /----)",
                 "            ^  ^  ^  ^     `-.....--'''"
             ]
-            
+
             color = Fore.YELLOW  # Brown color from Colorama
             for line in pattern:
                 print(color + line)
@@ -455,33 +439,32 @@ def room3():
     clear_terminal()
     print_letter_by_letter("You breathe a sigh of relief after vanquishing the beast.")
     print_letter_by_letter("You walk past its limp body and make your way to the next room where you find a large pedestal and a trapdoor on the roof.")
-    
+
     if check_item_in_inventory("Gem"):
         print_letter_by_letter("You notice a slot on the pedestal that seems to fit the gem you obtained earlier.")
         use_gem = input("Do you want to place the gem on the pedestal? ").lower()
-        
+
         if "yes" in use_gem:
             print_letter_by_letter("As you place the gem on the pedestal, a hidden mechanism is triggered.")
             print_letter_by_letter("The walls begin to rumble, and the ground beneath you shakes.")
             print_letter_by_letter("A secret passage opens before you, revealing a new path forward.")
             print_letter_by_letter("You step into the passage, ready to face whatever challenges await.")
             temple_chase_game()
-            # Add the gem ending here
-            
+
         else:
             print_letter_by_letter("You decide not to place the gem on the pedestal.")
             print_letter_by_letter("Curiosity piqued, you climb up to the trapdoor on the roof, wondering what lies above.")
             print_letter_by_letter("You open the trapdoor and find yourself outside the temple.")
             print_letter_by_letter("You leave the temple feeling unsatisfied")
             # Add the trapdoor ending here
-    
+
     else:
         print_letter_by_letter("Without the gem, you are left with only one option: the trapdoor on the roof.")
         print_letter_by_letter("Curiosity piqued, you climb up to the trapdoor and open it.")
         print_letter_by_letter("You open the trapdoor and find yourself outside the temple.")
         print_letter_by_letter("You leave the temple feeling unsatisfied")
         # Add the trapdoor ending here
-        
+
 def temple_chase_game():
     print("A Temple Guardian is chasing you!")
     print("Type 'jump' or 'run' to escape. Press Enter after each word.")
@@ -515,7 +498,7 @@ def temple_chase_game():
                 print("\nYou keep running from it.")
             success_count += 1
         else:
-            print("\nIncorrect! The Temple Guardian caught you.")
+            print("\nThe Temple Guardian caught you!")
             return False
 
     if success_count == 10:
