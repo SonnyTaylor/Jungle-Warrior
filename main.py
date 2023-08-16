@@ -1,5 +1,4 @@
 from colorama import Fore, Style
-import time
 import game_functions
 
 # Reset the inventory file
