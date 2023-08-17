@@ -235,6 +235,11 @@ def play_round(computer, human):
             game_in_progress = False
 
 def start_game(username_color):
+    """Starts scorpion fight sequence
+
+    Args:
+        username_color (variable): just here to bring over users name
+    """
 
     computer = Player(giant_scorpion)
 
