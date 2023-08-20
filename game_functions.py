@@ -10,10 +10,10 @@ giant_scorpion = Fore.RED + "Giant Scorpion" + Style.RESET_ALL
 
 #Descriptions for puzzle
 correct_sensations = {
-    "sky": "You feel a gentle breeze and a sense of weightlessness.",
+    "sky": "You feel a gentle breeze and a sense of weightlessness as you succesfully step right.",
     "earth": "The ground feels solid and reassuring beneath your feet.",
-    "water": "Coolness and fluidity embrace your step, like a soothing embrace.",
-    "fire": "A warm and invigorating energy courses through your body as you step onto the fiery tile."
+    "water": "Coolness and fluidity embrace your step, like a soothing embrace as you step on the correct tile.",
+    "fire": "A warm and invigorating energy courses through your body as you step onto the right tile."
 }
 incorrect_sound = "The ground beneath your foot feels unsettling."
 
