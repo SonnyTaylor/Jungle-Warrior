@@ -91,13 +91,6 @@ def display_inventory():
     except FileNotFoundError:
         print("Your inventory is empty.")
 
-def validate_input(prompt, valid_choices):
-    while True:
-        choice = input(prompt).strip()
-        if choice in valid_choices:
-            return choice
-        print("Invalid input. Please try again.")
-
 def clear_terminal():
     """
     Clears the terminal screen.
