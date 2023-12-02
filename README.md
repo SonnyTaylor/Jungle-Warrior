@@ -1,6 +1,4 @@
-# WIP!
-
-## Dungeon Warrior
+# Jungle Warrior
 
 A simple CLI text adventure game, created for a school project. it probably could be optimised and fixed like splitting it into multiple files but im lazy and it works
 
