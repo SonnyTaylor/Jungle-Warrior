@@ -1,4 +1,4 @@
-# A game by Sonny, Lerot and Cooper
+# A game by Sonny, Lerot(y) and Cooper
 import random
 from colorama import Fore, Style
 import time
@@ -112,12 +112,14 @@ def display_inventory():
   except FileNotFoundError:
     print("Your inventory is empty.")
 
+
 def validate_input(prompt, valid_choices):
-    while True:
-        choice = input(prompt).strip()
-        if choice in valid_choices:
-            return choice
-        print("Invalid input. Please try again.")
+  while True:
+    choice = input(prompt).strip()
+    if choice in valid_choices:
+      return choice
+    print("Invalid input. Please try again.")
+
 
 def clear_terminal():
   """
@@ -652,46 +654,61 @@ def room3():
   time.sleep(1)
   print_letter_by_letter(
     "You breathe a sigh of relief after vanquishing the beast.")
+  time.sleep(1)
   print_letter_by_letter(
     "You walk past its limp body and make your way to the next room where you find a large pedestal and a trapdoor on the roof."
   )
 
   if check_item_in_inventory("Gem"):
+    time.sleep(1)
     print_letter_by_letter(
       "You notice a slot on the pedestal that seems to fit the gem you obtained earlier."
     )
-    use_gem = input("Do you want to place the gem on the pedestal? ").lower()
+    use_gem = input(
+      "Do you want to place the gem on the pedestal? (y/n) ").lower()
 
-    if "yes" in use_gem:
+    if "y" in use_gem:
+      time.sleep(1)
       print_letter_by_letter(
         "As you place the gem on the pedestal, a hidden mechanism is triggered."
       )
+      time.sleep(1)
       print_letter_by_letter(
         "The walls begin to rumble, and the ground beneath you shakes.")
+      time.sleep(1)
       print_letter_by_letter(
         "A secret passage opens before you, revealing a new path forward.")
+      time.sleep(1)
       print_letter_by_letter(
         "You step into the passage, ready to face whatever challenges await.")
       temple_chase_game()
 
     else:
+      time.sleep(1)
       print_letter_by_letter(
         "You decide not to place the gem on the pedestal.")
+      time.sleep(1)
       print_letter_by_letter(
         "Curiosity piqued, you climb up to the trapdoor on the roof, wondering what lies above."
       )
+      time.sleep(1)
       print_letter_by_letter(
         "You open the trapdoor and find yourself outside the temple.")
+      time.sleep(1)
       print_letter_by_letter("You leave the temple feeling unsatisfied")
 
   else:
+    time.sleep(1)
     print_letter_by_letter(
       "Without the gem, you are left with only one option: the trapdoor on the roof."
     )
+    time.sleep(1)
     print_letter_by_letter(
       "Curiosity piqued, you climb up to the trapdoor and open it.")
+    time.sleep(1)
     print_letter_by_letter(
       "You open the trapdoor and find yourself outside the temple.")
+    time.sleep(1)
     print_letter_by_letter("You leave the temple feeling unsatisfied")
 
 
@@ -699,21 +716,21 @@ def temple_chase_game():
   # Temple guardian ASCII art
   print("         ,     .")
   print("        /(     )\\               A")
-  print("   .--.( `.___.' ).--.         /_\\")
+  print("   .--.( `.___.' ).--.         /_\\\\")
   print("   `._ `%_&%#%$_ ' _.'     /| <___> |\\")
   print("      `|(@\\*%%/@)|'       / (  |L|  ) \\")
   print("       |  |%%#|  |       J d8bo|=|od8b L")
   print("        \\ $|#%/ /        | 8888|=|8888 |")
   print("        |\\|%%#|/|        J Y8P\"|=|\"Y8P F")
-  print("        | (\".\")%|         \\ (  |L|  ) /")
+  print("        | (\\\".\\\")%|         \\ (  |L|  ) /")
   print("    ___.'  `-'  `.___      \\|  |L|  |/")
   print("  .'#*#`-       -'$#*`.       / )|")
   print(" /#%^#%*_ *%^%_  #  %$%\\    .J (__)")
   print(" #&  . %%%#% ###%*.   *%\\.-'&# (__)")
-  print(" %*  J %.%#_|_#$.J* \\ %'#%*^  (__)")
+  print(" %*  J %.%#_|_#$.J* \\ %#'#%*^  (__)")
   print(" *#% J %$%%#|#% J\\%   *   .--|(_)")
   print(" |%  J\\ `%%#|#%%' / `.   _.'  |L|")
-  print(" |#$%||` %%%$### '|   `-'      |L|")
+  print(" |#$%||` %%%$### '|   `-`      |L|")
   print(" (#%%||` #$#$%%% '|            |L|")
   print(" | ##||  $%%.%$%  |            |L|")
   print(" |$%^||   $%#$%   |            |L|")
@@ -722,7 +739,7 @@ def temple_chase_game():
   print(" ||||||  %%(@)$#  |\\\\        |L|")
   print(" `|||||  #$$|%#%  | L|         |L|")
   print("      |  #$%|$%%  | ||l        |L|")
-  print("      |  ##$H$%%  | |\\\\      |L|")
+  print("      |  ##$H$%%  | |\\\\       |L|")
   print("      |  #%%H%##  | |\\\\|     |L|")
   print("      |  ##% $%#  | Y|||       |L|")
   print("      J $$#* *%#% L  |E/")
@@ -738,7 +755,8 @@ def temple_chase_game():
   print("    ooooO'     `Ooooo")
 
   print("A Temple Guardian is chasing you!")
-  print("Type 'jump' or 'run' to escape. Press Enter after each word.")
+  print("Type the word that appears. Press Enter after each word.")
+  time.sleep(3)
 
   word_list = ["jump", "run", "slide"]
   success_count = 0
@@ -752,7 +770,7 @@ def temple_chase_game():
     print("\nType:", color + word + Style.RESET_ALL)  # Color the word
 
     user_input = ""
-    timeout = 4  # Set the time limit (in seconds) for typing the word
+    timeout = 3  # Set the time limit (in seconds) for typing the word
 
     def input_thread():
       nonlocal user_input
@@ -764,6 +782,9 @@ def temple_chase_game():
 
     if input_thread.is_alive():
       print("\nTime's up! The Temple Guardian caught you.")
+      print_letter_by_letter("YOU DIED")
+      time.sleep(1)
+      play_again()
       return False
 
     if user_input == word:
@@ -776,17 +797,42 @@ def temple_chase_game():
         success_count += 1
     else:
       print("\nThe Temple Guardian caught you!")
+      time.sleep(0.5)
+      print("YOU DIED")
+      play_again()
       return False
 
-  if success_count == 10:
+  if success_count >= 1:
     print_letter_by_letter(
       "\nCongratulations! You successfully escaped the Temple Guardian!")
-    return True
+    gem_chase_ending()
+    return False
 
-  print("Game over.")
-  exit()
-  return False
 
-def gem_ending():
-    print_letter_by_letter("After successfully escaping from the Temple Guardian you make your way to the end of the cave")
-    print_letter_by_letter("")
+def gem_chase_ending():
+  print_letter_by_letter(
+    "After successfully escaping from the Temple Guardian, you make your way to the end of the cave."
+  )
+  time.sleep(1)  # Add a pause for dramatic effect
+  print_letter_by_letter(
+    "As you emerge from the cave, you're greeted by a breathtaking view of a hidden paradise."
+  )
+  time.sleep(1)
+  print_letter_by_letter(
+    "The sun's warm rays caress your skin, and a gentle breeze carries the scent of blooming flowers."
+  )
+  time.sleep(1)
+  print_letter_by_letter(
+    "In front of you lies the fabled Lost City of Gems, sparkling with untold riches and mysteries."
+  )
+  time.sleep(1)
+  print_letter_by_letter(
+    "Congratulations, brave adventurer! You've not only survived but discovered unimaginable treasures."
+  )
+  time.sleep(1)
+  print_letter_by_letter(
+    "You are hailed as a hero and a legend, and your name will be remembered for generations to come."
+  )
+  print_letter_by_letter("Thanks for playing!")
+  time.sleep(1)
+  play_again()  # Ask if user wants to play again

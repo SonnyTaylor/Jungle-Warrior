@@ -1,4 +1,5 @@
 # A game by Sonny, Leroy and Cooper
+# best played on PC
 from colorama import Fore, Style
 import game_functions
 
@@ -6,6 +7,7 @@ import game_functions
 game_functions.reset_inventory_file()
 
 # Correct sequences for puzzle section
+# I dont even think these are needed here lol
 correct_sensations = {
   "sky":
   "You feel a gentle breeze and a sense of weightlessness.",
